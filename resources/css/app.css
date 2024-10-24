@@ -1,0 +1,394 @@
+/* Estilo global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    padding: 15px 30px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    transition: background-color 0.3s;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.navbar a:hover {
+    color: #18bc9c;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.navbar-menu {
+    display: flex;
+}
+
+/* Media Queries para Navbar Responsivo */
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+    }
+
+    .navbar.active .navbar-menu {
+        display: flex;
+    }
+
+    .navbar-toggle {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+.navbar-toggle {
+    display: none;
+    color: white;
+    font-size: 1.5em;
+}
+
+/* Header */
+header {
+    height: 100vh;
+    background: linear-gradient(to right, #34495e, #2c3e50);
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Sección principal */
+.content {
+    padding: 50px;
+    text-align: center;
+}
+
+.card {
+    display: inline-block;
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* General navbar styling */
+.navbar {
+background-color: #D2691E; /* Fondo claro de la barra de navegación (color gris claro) */
+padding: 10px; /* Añade espacio interno (padding) alrededor de los elementos de la barra */
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil debajo de la barra para darle profundidad */
+text-align: center; /* Centra el contenido dentro de la barra de navegación horizontalmente */
+}
+
+/* Logo styling (estilo del logotipo) */
+.logo {
+height: 30px; /* Aumenta el tamaño del logotipo a una altura de 60px */
+transition: transform 0.3s ease-in-out; /* Crea una transición suave de 0.3 segundos cuando el logotipo cambia su transformación (como agrandarse) */
+}
+
+/* Logo hover effect (efecto hover en el logotipo) */
+.logo:hover {
+transform: scale(1.1); /* Agranda ligeramente el logotipo al pasar el ratón por encima (hover), escala un 110% de su tamaño original */
+}
+
+/* Brand name styling (estilo del nombre de la marca) */
+.brand-name {
+color: #FF5733; /* Define un color naranja fuerte para el texto de la marca */
+font-size: 20px; /* Establece el tamaño de la fuente del nombre de la marca a 40px, haciéndolo bastante grande */
+font-weight: bold; /* Aplica un estilo de fuente en negrita para resaltar el nombre de la marca */
+margin-top: 10px; /* Añade un margen superior de 10px entre el logotipo y el texto del nombre de la marca */
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Añade una sombra al texto, con un desplazamiento de 2px horizontal y vertical, y difumina la sombra a 4px con un color negro semitransparente */
+letter-spacing: 1px; /* Aumenta el espacio entre las letras en 1px, lo que da un aspecto más abierto al texto */
+transition: color 0.3s ease-in-out; /* Crea una transición suave de 0.3 segundos cuando el color del texto cambia */
+}
+
+/* Brand name hover effect (efecto hover en el nombre de la marca) */
+.brand-name:hover {
+color: #A52A2A; /* Cambia el color del texto a un rojo más oscuro al pasar el ratón sobre el nombre de la marca */
+}
+
+
+
+
+/*seccion header arribaaaaaaaaaaaaaaaaaaaaa--------------------------------------------------------------------------------*/
+/* General navbar styling */
+.navbar {
+background-color: #D2691E; /* Color de fondo azul oscuro */
+padding: 3px; /* Espacio alrededor de los elementos dentro de la barra */
+display: flex;
+justify-content: space-between; /* Espacio entre los elementos para distribución */
+align-items: center; /* Centrar verticalmente los elementos */
+position: relative; /* Relativo para el menú hamburguesa */
+}
+
+/* Logo styling */
+.logo {
+height: 50px; /* Tamaño del logo */
+transition: transform 0.3s ease-in-out;
+}
+
+/* Brand name styling */
+.brand-name {
+color: #ECF0F1; /* Naranja brillante */
+font-size: 36px; /* Tamaño del texto */
+font-weight: bold; /* Negrita */
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra del texto */
+margin-left: 10px; /* Espacio entre el logo y el texto */
+}
+
+/* Navbar menu styling */
+.navbar-menu {
+display: flex;
+gap: 20px; /* Espacio entre enlaces */
+}
+
+.navbar-menu a {
+color: #D2691E; /* Color blanco para los enlaces */
+text-decoration: none; /* Sin subrayado */
+font-size: 18px; /* Tamaño del texto */
+transition: color 0.3s ease-in-out; /* Transición suave al cambiar color */
+padding: 10px 20px; /* Espacio interno de los enlaces */
+border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Efecto hover en los enlaces */
+.navbar-menu a:hover {
+background-color: #FF5733; /* Fondo naranja al pasar el ratón */
+color: #fff; /* Color del texto blanco */
+}
+
+/* Navbar toggle (hamburguesa) styling */
+.navbar-toggle {
+font-size: 30px; /* Tamaño del icono */
+color: #ECF0F1; /* Color blanco */
+cursor: pointer; /* Cambia el cursor al pasar el ratón */
+display: none; /* Oculto en pantallas grandes */
+}
+
+/* Menú hamburguesa en dispositivos móviles */
+@media (max-width: 768px) {
+.navbar-menu {
+display: none; /* Ocultar el menú en pantallas pequeñas por defecto */
+flex-direction: column; /* Cambia el menú a columna */
+background-color: #34495E; /* Fondo oscuro para el menú desplegable */
+position: absolute; /* Posición fija para que se superponga al contenido */
+top: 60px; /* Debajo de la barra de navegación */
+right: 0; /* Alineado a la derecha */
+width: 100%; /* Ocupa todo el ancho */
+text-align: center; /* Centrar el texto */
+}
+
+.navbar-menu a {
+padding: 15px; /* Aumenta el espacio interno para hacer los enlaces más grandes */
+border-bottom: 1px solid #ecf0f1; /* Línea divisoria entre los enlaces */
+}
+
+.navbar-toggle {
+display: block; /* Mostrar el icono hamburguesa en pantallas pequeñas */
+}
+
+/* Mostrar el menú al hacer clic en el botón hamburguesa */
+.navbar.open .navbar-menu {
+display: flex; /* Muestra el menú cuando se activa el botón */
+}
+}
+
+/* Navbar menu styling */
+.navbar-menu {
+display: flex;
+justify-content: center; /* Centrar el menú */
+gap: 0px; /* Espacio entre los enlaces */
+margin: 0 auto; /* Mueve el menú más al centro */
+margin-left: 100px; /* Elimina cualquier margen izquierdo */
+}
+
+/* Estilo para la barra de búsqueda */
+.navbar-search {
+display: flex; /* Utiliza flexbox para alinear los elementos dentro de la barra de búsqueda */
+align-items: center; /* Alinea verticalmente los elementos al centro */
+
+margin-left: 850px; /* Elimina cualquier margen izquierdo */
+}
+
+/* Estilo para el campo de entrada del buscador */
+.navbar-search input {
+padding: 10px 20px; /* Agrega un padding interno de 5px arriba y abajo, 10px a los lados */
+font-size: 16px; /* Establece el tamaño de fuente a 16px */
+border-radius: 20px; /* Aplica esquinas redondeadas de 5px */
+border: 1px solid #ccc; /* Define un borde de 1px de grosor y color gris claro */
+}
+
+/* Estilo para el botón de búsqueda */
+.navbar-search button {
+background-color: #FF5733; /* Establece un color de fondo anaranjado */
+color: white; /* Define el color del texto en blanco */
+border: none; /* Elimina el borde predeterminado del botón */
+padding: 5px 10px; /* Agrega un padding interno de 5px arriba y abajo, 10px a los lados */
+cursor: pointer; /* Cambia el cursor a un puntero al pasar sobre el botón */
+border-radius: 5px; /* Aplica esquinas redondeadas de 5px */
+margin-left: 150px; /* Agrega un margen a la izquierda de 5px para espaciar del campo de entrada */
+}
+
+/* Estilo para el ícono dentro del botón de búsqueda */
+.navbar-search button i {
+font-size: 18px; /* Establece el tamaño del ícono a 18px */
+}
+
+/* Estilo para el contenedor de íconos (carrito, login, registro) */
+.navbar-icons {
+display: flex; /* Utiliza flexbox para alinear los íconos horizontalmente */
+align-items: center; /* Alinea verticalmente los íconos al centro */
+gap: 15px; /* Define un espacio de 15px entre los íconos */
+}
+
+/* Estilo para los enlaces dentro del contenedor de íconos */
+.navbar-icons a {
+color: #ECF0F1; /* Establece el color del texto en un gris claro */
+font-size: 20px; /* Define el tamaño de fuente a 20px */
+text-decoration: none; /* Elimina el subrayado del texto */
+}
+
+/* Efecto de hover para los enlaces dentro del contenedor de íconos */
+.navbar-icons a:hover {
+color: #33ff36; /* Cambia el color del texto a anaranjado al pasar el mouse sobre el enlace */
+}
+
+/* Estilo para el botón de inicio de sesión y registro */
+.login-btn, .register-btn {
+background-color: #FF5733; /* Establece un color de fondo anaranjado */
+color: white; /* Define el color del texto en blanco */
+border: none; /* Elimina el borde predeterminado del botón */
+padding: 10px 20px; /* Agrega un padding interno de 5px arriba y abajo, 10px a los lados */
+border-radius: 5px; /* Aplica esquinas redondeadas de 5px */
+cursor: pointer; /* Cambia el cursor a un puntero al pasar sobre el botón */
+margin-left: 0px; /* Elimina cualquier margen izquierdo */
+}
+
+/* Si deseas un margen entre los botones, puedes añadir un margen izquierdo específico solo al segundo botón */
+.register-btn {
+margin-left: -40px; /* Puedes ajustar este valor a 0px si deseas que estén tocándose */
+}
+
+
+
+/* Efecto de hover para los botones de inicio de sesión y registro */
+.login-btn:hover, .register-btn:hover {
+background-color: #D2691E; /* Cambia el color de fondo a un rojo más oscuro al pasar el mouse */
+
+}
+
+
+/* Estilo para el ícono del carrito */
+.cart-icon {
+display: flex; /* Para centrar el ícono */
+align-items: center; /* Centrar verticalmente */
+justify-content: center; /* Centrar horizontalmente */
+width: 50px; /* Ancho del contenedor del ícono */
+height: 50px; /* Alto del contenedor del ícono */
+background-color: #FF5733; /* Color de fondo del ícono */
+border-radius: 50%; /* Hace que el contenedor sea circular */
+transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves para color y tamaño */
+margin-left: -20px; /* Ajuste del margen izquierdo */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil alrededor del ícono */
+}
+
+/* Cambia el color de fondo al pasar el mouse sobre el ícono */
+.cart-icon:hover {
+background-color: #C70039; /* Color de fondo al pasar el mouse */
+transform: scale(1.1); /* Aumenta el tamaño ligeramente al pasar el mouse */
+}
+
+/* Estilo para el ícono dentro del botón */
+.cart-icon svg {
+width: 50px; /* Tamaño del ícono */
+height: 50px; /* Tamaño del ícono */
+fill: white; /* Color del ícono */
+}
+
+
+/* Estilo para el pie de página */
+.footer {
+background-color: #D2691E; /* Color de fondo marrón claro */
+color: white; /* Color del texto en blanco */
+text-align: center; /* Centra el texto */
+padding: 20px; /* Añade un padding de 20px */
+position: relative; /* Para posicionar elementos dentro si es necesario */
+box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil en la parte superior */
+}
+
+/* Estilo para el texto */
+.footer p {
+margin: 0; /* Elimina márgenes por defecto */
+font-size: 16px; /* Tamaño de fuente */
+font-family: 'Arial', sans-serif; /* Tipo de letra */
+transition: color 0.3s ease; /* Transición suave para cambios de color */
+}
+
+/* Efecto hover */
+.footer p:hover {
+color: #fff; /* Cambia el color del texto al hacer hover */
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Agrega sombra al texto en hover */
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 600px) {
+.footer p {
+font-size: 14px; /* Reduce el tamaño de fuente en pantallas pequeñas */
+}
+}
+

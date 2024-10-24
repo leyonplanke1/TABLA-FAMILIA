@@ -1,0 +1,68 @@
+body {
+    background-color: #FFF8DC; /* Fondo crema claro */
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-content {
+    background-color: #FFF;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.input-div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #D2691E;
+}
+
+.input-div .i {
+    color: #D2691E;
+    margin-right: 10px;
+}
+
+.input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+    color: #333;
+}
+
+.input:focus {
+    border-bottom: 2px solid #A0522D; /* Cambio de color en el foco */
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #D2691E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #A0522D; /* Color más oscuro al pasar el mouse */
+}
+
+.view .fa-eye {
+    color: #D2691E;
+    cursor: pointer;
+}
+
+h5 {
+    color: #D2691E;
+}
+
