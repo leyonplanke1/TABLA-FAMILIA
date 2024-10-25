@@ -214,11 +214,11 @@
 /* Estilo para el carrusel */
 .carousel {
     position: relative;
-    width: 100%; /* Se ajusta al ancho del contenedor */
+    width: 110%; /* Se ajusta al ancho del contenedor */
     max-width: 1000px; /* Ancho máximo del carrusel */
-    margin: 20px auto;
+    margin: -30px auto;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
