@@ -144,6 +144,97 @@
             bottom: 0;
             width: 100%;
         }
+        .nosotros {
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #003366;
+    margin-bottom: 30px;
+}
+
+.nosotros-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.nosotros-texto {
+    flex: 1;
+    max-width: 60%;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.nosotros-imagen img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mision-vision {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.mision, .vision {
+    width: 40%;
+}
+
+.mision h3, .vision h3 {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #28a745;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.mision p, .vision p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.nosotros {
+    padding: 110px;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.contenedor-nosotros {
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.titulo-nosotros {
+    font-size: 2.5rem;
+    color: #D2691E; /* Ajusta el color si es necesario */
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.descripcion-nosotros {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 100px;
+}
+
+
+
+
+
     </style>
 </head>
 
@@ -151,46 +242,48 @@
 
     
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <div>
-            <h1>Sobre Nosotros</h1>
-            <p>Conoce más sobre nuestra historia, valores y lo que nos hace únicos.</p>
-        </div>
-    </div>
+    
 
     <!-- Sección Nosotros -->
-    <div class="nosotros" id="nosotros">
-        <h2>¿Quiénes Somos?</h2>
-        <p>
+    <!-- Sección Nosotros -->
+<section class="nosotros" id="nosotros">
+    <div class="contenedor-nosotros">
+        <h2 class="titulo-nosotros">¿Quiénes Somos?</h2>
+        <p class="descripcion-nosotros">
             En LA FAMILIA, nos dedicamos a brindar las mejores soluciones para nuestros clientes. 
             Creemos en la innovación, el trabajo en equipo y en crear un impacto positivo en la comunidad.
         </p>
     </div>
+</section>
+ 
 
-    <!-- Sección Equipo -->
-    <div class="nosotros" id="equipo">
-        <h2>Nuestro Equipo</h2>
-        <div class="team">
-            <div class="team-member">
-                <img src="https://source.unsplash.com/100x100/?person" alt="Miembro 1">
-                <h3>Juan Pérez</h3>
-                <p>CEO & Fundador</p>
+    <section id="nosotros" class="nosotros">
+        <h2 class="title">En Nuestras Propias Palabras</h2>
+        <div class="nosotros-container">
+            <div class="nosotros-texto">
+                <h3>¡El esfuerzo de lograr un servicio óptimo!</h3>
+                <p>En nuestra empresa tenemos los objetivos claros, para así fortalecer nuestra organización, contando con personal altamente capacitado y comprometido, basada en la rapidez en la atención al cliente y la buena calidad de los productos.</p>
+                <p>Hoy en día, contamos con la capacidad de ofrecer a nuestros clientes una variedad de Gases Industriales y Medicinales, Extintores, Seguridad Industrial, Soldadura, entre otros productos especializados de la demanda en el mercado.</p>
+                <p>Mantenemos el reto continuo de mantener un personal altamente motivado y capacitado; como recursos, productos de reconocida calidad; y sobre todo la satisfacción de contar día a día con clientes satisfechos a quienes damos la bienvenida y recibimos como parte de esta gran familia.</p>
+                <p><strong>Equipo La Familia</strong><br>Gerencia</p>
             </div>
-            <div class="team-member">
-                <img src="https://source.unsplash.com/100x100/?woman" alt="Miembro 2">
-                <h3>María García</h3>
-                <p>Directora de Marketing</p>
-            </div>
-            <div class="team-member">
-                <img src="https://source.unsplash.com/100x100/?man" alt="Miembro 3">
-                <h3>Pedro Fernández</h3>
-                <p>Desarrollador Senior</p>
+            <div class="nosotros-imagen">
+                <img src="images/equipo.jpg" alt="Equipo La Familia">
             </div>
         </div>
-    </div>
-
-   
+    
+        <div class="mision-vision">
+            <div class="mision">
+                <h3>Misión</h3>
+                <p>Nuestra misión consiste en alcanzar el éxito basándonos en la dedicación a la satisfacción del cliente, innovación constante y eficiencia operativa.</p>
+            </div>
+            <div class="vision">
+                <h3>Visión</h3>
+                <p>Ser reconocidos como líderes en nuestro sector, otorgando soluciones que excedan las expectativas de nuestros clientes.</p>
+            </div>
+        </div>
+    </section>
+    
 
 </body>
 </html>

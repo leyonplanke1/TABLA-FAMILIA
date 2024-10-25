@@ -209,34 +209,26 @@
 
 /* Estilo para el carrusel */
 .carousel {
-    position: relative; /* Posición relativa para los botones */
-    overflow: hidden; /* Oculta las imágenes que salen del contenedor */
+    position: relative;
+    width: 100%; /* Se ajusta al ancho del contenedor */
     max-width: 1000px; /* Ancho máximo del carrusel */
-    margin: auto; /* Centra el carrusel */
-    
-    
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-images {
-    display: flex; /* Alinea las imágenes en línea */
-    transition: transform 0.10s ease; /* Transición suave */
-    width: 100%; /* Asegura que las imágenes ocupen todo el ancho */
-    height: 2000%; /* Asegura que las imágenes ocupen toda la altura del contenedor */
-    object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
+    display: flex;
+    transition: transform 0.5s ease;
 }
 
 .carousel-images img {
-    width: 200%; /* Asegura que las imágenes ocupen todo el ancho */
-    height: 100%; /* Asegura que las imágenes ocupen toda la altura del contenedor */
-    object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
-    border-radius: 5px; /* Bordes redondeados */
-}
-
-
-
-.carousel-images img {
-    max-width: 100%; /* Asegura que las imágenes no se desborden */
-    border-radius: 5px; /* Bordes redondeados */
+    width: 2000px;  /* Controla el ancho de las imágenes */
+    height: 750px; /* Controla la altura de las imágenes */
+    object-fit: cover; /* Asegura que las imágenes mantengan sus proporciones */
+    margin: 10px; /* Espacio entre las imágenes */
+    border-radius: 20px; /* Esquinas redondeadas */
 }
 
 .prev, .next {
@@ -263,6 +255,110 @@
 }
 
 
+.product-section {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 60px auto;
+    max-width: 1400px;
+}
+
+.product-card {
+    text-align: center;
+    max-width: 900px; /* Ajusta el ancho de la tarjeta */
+}
+
+.product-card img {
+    width: 100%;  /* Asegura que la imagen ocupe el ancho completo de la tarjeta */
+    height: 600px; /* Incrementa la altura de la imagen */
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    transition: transform 0.3s; /* Animación suave al pasar el cursor */
+}
+
+.product-card img:hover {
+    transform: scale(1.05); /* Efecto zoom al pasar el cursor */
+}
+
+.product-card h2 {
+    color: #2C3E50;
+    margin: 15px 0;
+    font-size: 1.5rem; /* Tamaño más grande para los títulos */
+    font-weight: 500;
+}
+
+.product-card h3 {
+    color: #D2691E;
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-size: 1.2rem; /* Tamaño más grande para los subtítulos */
+}
+
+.extintores-section {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    background-color: #f4f4f4;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.extintores-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.extintores-img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.extintores-info {
+    max-width: 50%;
+}
+
+.extintores-info h1 {
+    color: #D2691E;
+}
+
+.btn-comprar {
+    background-color: #D2691E;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.productos-recomendados {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.producto-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.producto-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+
+
     </style>
 
 
@@ -280,23 +376,86 @@
 
     <div class="carousel">
         <div class="carousel-images">
-            <img src="https://media.istockphoto.com/id/1906630287/es/foto/process-of-creating-an-interface-for-a-mobile-app-user-interface-and-experience-concept-modern.jpg?s=2048x2048&w=is&k=20&c=l1e8Q3V1oh_TCc77VAF2yksKeEJb5zeSPaPh70kH89I=" alt="Proyecto 1">
-            <img src="https://media.istockphoto.com/id/1385970223/es/foto/gran-idea-de-un-plan-de-estrategia-de-marketing-en-una-oficina-creativa.jpg?s=2048x2048&w=is&k=20&c=kKswEjvyz3apsOJLdeR4xh1N-4bHMd_2l5V5NxT8Tpw=" alt="Proyecto 2">
-            <img src="https://media.istockphoto.com/id/1354583989/es/foto/joven-empresario-reflexivo-camisa-de-mezclilla-casual-sosteniendo-su-no.jpg?s=2048x2048&w=is&k=20&c=yQYYknQB7EVgKSErPtjaYcFn63qB7sJlGIECzWQhT5c=" alt="Proyecto 3">
+            <img src="https://files.oaiusercontent.com/file-s4XagS8jiUVWcV5DPr8H9LiL?se=2024-10-25T01%3A24%3A05Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Ddb048eb1-508f-4bbe-8b5b-3d4795f7695f.webp&sig=oG83BLcCHGvuPih9Sq9rsCeWUVqcK6qxHIF3NdJrUYg%3D" alt="Proyecto 1">
+            <img src="https://files.oaiusercontent.com/file-YCqabcULX3WJx6L99BdVNLDL?se=2024-10-25T01%3A27%3A47Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D8d098f09-c22b-4e2d-b408-9c0072ab1852.webp&sig=3bQoJ3QGybcqkMaEEP0Y3GT3IU%2BUw0RjLauH%2Bg5rjYs%3D" alt="Proyecto 2">
+            <img src="https://files.oaiusercontent.com/file-Eqq4Ujqo0954kSl1ZiooTIlM?se=2024-10-25T01%3A25%3A34Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D4fef244c-5db2-4d81-b7b1-b7a22674dadd.webp&sig=Gg2bTMz9oN0BGKWEkIS97sdxVZV1Sp7kvUvNPz1IiMo%3D" alt="Proyecto 3" width="50px" height="90px">
         </div>
         <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
         <button class="next" onclick="moveSlide(1)">&#10095;</button>
     </div>
 </section>
 
+
+
+
+
 <body class="antialiased">
     <h1>Hola mundo</h1>
 
-    <div class="container">
-        <h1>Bienvenido a Nuestra Tienda          holaaaamundooooooooooooo</h1>
-        <p>Encuentra los mejores productos al mejor precio.</p>
+    
+    <div class="product-section">
+        <div class="product-card">
+            <img src="{{ asset('images/lana2.jpg') }}" alt="Gases Medicinales" width="20px">
+            <h2>Lanas de toda calidad</h2>
+            <h3>Todas las marcas</h3>
+        </div>
+    
+        <div class="product-card">
+            <img src="{{ asset('images/boto.jpg') }}" alt="Gases Industriales">
+            <h2>Merceria en General</h2>
+            <h3>Todas las calidades</h3>
+        </div>
+    
+        <div class="product-card">
+            <img src="{{ asset('images/tela.jpg') }}" alt="Accesorios">
+            <h2>Telas </h2>
+            <h3>Todos los materiales</h3>
+        </div>
+        <div class="product-card">
+            <img src="{{ asset('images/mochila.jpg') }}" alt="Accesorios">
+            <h2>Mochilas y Carteras  </h2>
+            <h3>Todas las calidades</h3>
+        </div>
+    </div>
     </div>
     
+
+    <div class="extintores-section">
+        <div class="extintores-content">
+            <img src="https://files.oaiusercontent.com/file-VZoV1fxEmAXsdjr0SzoUY1uK?se=2024-10-25T01%3A31%3A43Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da018e1c8-b5d6-49ed-be51-eeae5de19e42.webp&sig=mJQY1ptUT9AzMwQWr%2BJfaZHVzaOeAQRhuwyHm8/Eo1k%3D" alt="Extintores" class="extintores-img">
+            <div class="extintores-info">
+                <h2>Calidad en merceria</h2>
+                <h1>Siempre La mejor Calidad</h1>
+                <p>
+                    Compartimos la mejor calidad a traves de nuestro producto y el mejor servicio a disposicion de todo publico.
+                </p>
+                <button class="btn-comprar">COMPRAR AHORA</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="productos-recomendados">
+        <h1>Nuestros Productos Recomendados</h1>
+        <div class="productos-grid">
+            <div class="producto-card">
+                <img src="https://i.pinimg.com/564x/4f/2f/35/4f2f352dfdcd51ac754946de1603dd0a.jpg" alt="Oxígeno JD/JP">
+                <p>Lanas de Toda Calidad</p>
+            </div>
+            <div class="producto-card">
+                <img src="https://i.pinimg.com/564x/75/4e/39/754e3958c97ec49b41b9abbffd711495.jpg" alt="Oxígeno NORRIS">
+                <p>Ropa interior  niños y adultos</p>
+            </div>
+            <div class="producto-card">
+                <img src="https://i.pinimg.com/564x/8e/df/c4/8edfc4abcf8dfad7f8cb30bdd36fb2b9.jpg" alt="Oxígeno 1.5 M3">
+                <p>Telas de toda calidades</p>
+            </div>
+            <div class="producto-card">
+                <img src="https://i.pinimg.com/564x/a4/8b/f2/a48bf23f6c28a229a6640986349db995.jpg" alt="Oxígeno Portátil">
+                <p>Mochilas y Carteras</p>
+            </div>
+        </div>
+    </div>
+
 
 <!-- Cuerpo principal -->
 <div class="content">

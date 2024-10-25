@@ -66,7 +66,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: #D2691E;
             text-align: center;
             padding: 20px;
         }
@@ -241,8 +241,8 @@
         <div class="contact-info">
             <h2>Nuestra Información</h2>
             <p><strong>Teléfono:</strong> +51 987 654 321</p>
-            <p><strong>Email:</strong> <a href="mailto:info@lafamilia.com">info@lafamilia.com</a></p>
-            <p><strong>Dirección:</strong> Av. Principal 123, Lima, Perú</p>
+            <p><strong>Email:</strong> <a href="mailto:info@lafamilia.com">lafamilia390@gmail.com</a></p>
+            <p><strong>Dirección:</strong> Jr . 9 de Julio 397 - concepcion</p>
 
             <div class="social-links">
                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -262,7 +262,7 @@
             </div>
             <div class="faq-item">
                 <h3>¿Dónde estamos ubicados?</h3>
-                <p>Nuestra oficina se encuentra en Lima, Perú.</p>
+                <p>Nuestro local esta en Concepcion,Junin..</p>
             </div>
         </div>
     </div>

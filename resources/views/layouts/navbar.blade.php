@@ -307,7 +307,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Mi Web Moderna. Todos los derechos reservados.</p>
+        <p>&copy; 2024 La Familia. Todos los derechos reservados.</p>
+
     </footer>
 
     
