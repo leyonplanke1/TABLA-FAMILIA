@@ -9,6 +9,7 @@ use App\Http\Controllers\VentasController;
 use App\Http\Controllers\ProductosTiendaController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\UsuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,10 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/welcome'); // Redirige a la página welcome
+})->name('logout');
 
 
 
@@ -46,6 +49,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('tienda.index');
     })->name('tienda.index');
 
+    Route::resource('usuarios', UsuariosController::class);
 
     Route::resource('clientes', ClientesController::class);
     Route::resource('productos', ProductosController::class);
@@ -78,6 +82,16 @@ Route::middleware(['auth', 'role:cliente'])->group(function () {
     Route::post('/cart/add/{id_producto}', [ProductosTiendaController::class, 'addToCart'])->name('cart.add');
     Route::get('/remove-from-cart/{id_producto}', [ProductosTiendaController::class, 'removeFromCart'])->name('cart.remove');
     Route::get('/clear-cart', [ProductosTiendaController::class, 'clearCart'])->name('cart.clear');
+
+
+    
+
+  
+
+
+
+    
+   
 
     
 });

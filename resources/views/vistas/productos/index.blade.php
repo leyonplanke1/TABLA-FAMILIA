@@ -26,6 +26,7 @@
                 <th scope="col">Stock</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Categoría</th>
+                <th scope="col">Foto</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -39,6 +40,12 @@
                 <td>{{ $producto->stock }}</td>
                 <td>{{ $producto->descripcion }}</td>
                 <td>{{ $producto->categoria->nombre }}</td>
+                <!-- Celda de la foto del producto -->
+                <td>
+                    <img src="{{ asset('images/' . $producto->foto) }}" alt="{{ $producto->nombre }}" width="50" height="50">
+                </td>
+                
+                
                 <td>
                     <!-- Botón para ver detalles del producto en un modal -->
                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#verProductoModal{{ $producto->id_producto }}">Ver</button>
@@ -68,6 +75,7 @@
                             <p><strong>Stock:</strong> {{ $producto->stock }}</p>
                             <p><strong>Descripción:</strong> {{ $producto->descripcion }}</p>
                             <p><strong>Categoría:</strong> {{ $producto->categoria->nombre }}</p>
+                            <img src="{{ asset('images/' . $producto->foto) }}" width="100" height="50">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -110,6 +118,9 @@
                                     <label for="descripcion" class="form-label">Descripción</label>
                                     <textarea class="form-control" name="descripcion">{{ $producto->descripcion }}</textarea>
                                 </div>
+
+                                <label for="foto" class="form-label">Foto</label>
+                                    <input type="file" class="form-control" name="foto">
                                 <div class="mb-3">
                                     <label for="id_categoria" class="form-label">Categoría</label>
                                     <select name="id_categoria" class="form-control">
@@ -177,7 +188,7 @@
             </div>
             <div class="modal-body">
                 <!-- Formulario para crear un nuevo producto -->
-                <form action="{{ route('productos.store') }}" method="POST">
+                <form action="{{ route('productos.store') }}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="codigo" class="form-label">Código</label>
@@ -207,6 +218,13 @@
                             <option value="0">Inactivo</option>
                         </select>
                     </div>
+                    <td>
+                        @if($producto->foto && file_exists(public_path('images/' . $producto->foto)))
+                            <img src="{{ asset('images/' . $producto->foto) }}" alt="{{ $producto->nombre }}" width="50" height="50">
+                        @else
+                            <p>Sin imagen</p>
+                        @endif
+                    </td>
                     <div class="mb-3">
                         <label for="id_categoria" class="form-label">Categoría</label>
                         <select name="id_categoria" class="form-control">
@@ -224,6 +242,17 @@
         </div>
     </div>
 </div>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 
 
 @endsection

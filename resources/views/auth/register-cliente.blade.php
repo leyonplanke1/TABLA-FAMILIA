@@ -105,13 +105,7 @@
                     <input id="correo" type="email" name="correo" class="form-control" placeholder="Ingresa tu correo electrónico" required>
                 </div>
 
-                <div class="mb-4">
-                    <label for="tipo_usuario" class="form-label">Tipo de Usuario</label>
-                    <select id="tipo_usuario" name="tipo_usuario" class="form-control" required>
-                        <option value="1">Administrador</option>
-                        <option value="2" selected>Cliente</option>
-                    </select>
-                </div>
+               
 
                 <div class="mb-4">
                     <label for="password" class="form-label">Contraseña</label>

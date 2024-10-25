@@ -171,9 +171,12 @@
                             </label>
                         </div>
 
-                        <div class="text-center mb-3">
-                            <a href="#" class="font-italic">Olvidé mi contraseña</a>
+                        <div class="form-group text-center">
+                            <a href="{{ route('register') }}" class="text-decoration-none" style="color: #FF5733;">
+                                ¿Aún no tienes cuenta? Regístrate aquí
+                            </a>
                         </div>
+                        
 
                         <button type="submit" class="btn-login">INICIAR SESIÓN</button>
                     </form>

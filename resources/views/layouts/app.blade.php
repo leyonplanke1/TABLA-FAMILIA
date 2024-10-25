@@ -79,6 +79,22 @@
 
 
 
+<!-- Necesario-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+
+
+
+
         <style>
             .marca {
                 width: 100%;
@@ -241,21 +257,21 @@
                 <li class="red with-sub {{ Request::is('clientes*') ? 'opened' : ''}}">
                     <span>
                         <img src="{{asset('img-inicio/pngegg.png')}}" class="img-inicio" alt="">
-                        <span class="lbl">Clientes</span>
+                        <span class="lbl">USUARIOS</span>
                     </span>
                     <ul>
                         <!-- Submenú para listar clientes -->
                         <li>
-                            <a href="{{ route('clientes.index') }}" class="{{ Request::is('clientes.index') ? 'activo' : ''}}">
+                            <a href="{{ route('usuarios.index') }}" class="{{ Request::is('usuarios.index') ? 'activo' : ''}}">
                                 <i class="fas fa-list icono-submenu"></i>
-                                <span class="lbl">Clientes</span>
+                                <span class="lbl">Listar Usuarios</span>
                             </a>
                         </li>
                         <!-- Submenú para agregar un cliente -->
                         <li>
                             <a href="{{ route('clientes.create') }}" class="{{ Request::is('clientes.create') ? 'activo' : ''}}">
                                 <i class="fas fa-plus icono-submenu"></i>
-                                <span class="lbl">Nuevo Cliente</span>
+                                <span class="lbl">Nuevo Usuario</span>
                             </a>
                         </li>
                     </ul>

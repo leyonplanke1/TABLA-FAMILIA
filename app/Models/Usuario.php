@@ -53,4 +53,10 @@ class Usuario extends Authenticatable
     {
         return $this->tipo_usuario === 2; // 2 para cliente
     }
+
+
+    public function ventas()
+{
+    return $this->hasMany(Venta::class, 'id_usuario');
+}
 }

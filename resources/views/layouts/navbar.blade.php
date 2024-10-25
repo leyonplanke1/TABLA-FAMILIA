@@ -222,23 +222,22 @@
 
     /* Estilo para los enlaces de la navbar */
     .login-btn, .register-btn, .logout-btn {
-        background-color: #18bc9c; /* Color de fondo */
+        background-color: #B8860B; /* Color de fondo */
         color: white; /* Color del texto */
         border: none; /* Sin borde */
-        padding: 10px 15px; /* Espaciado interno */
-        border-radius: 5px; /* Bordes redondeados */
+        padding: 15px 20px; /* Espaciado interno */
+        border-radius: 10px; /* Bordes redondeados */
         cursor: pointer; /* Cambia el cursor a puntero */
         transition: background-color 0.3s; /* Transición para el efecto hover */
-        margin-left: 10px; /* Espacio entre botones */
+        margin-left: -10px; /* Espacio entre botones */
     }
 
     .login-btn:hover, .register-btn:hover, .logout-btn:hover {
-        background-color: #16a085; /* Cambia el color al pasar el ratón */
+        background-color: #B8860B; /* Cambia el color al pasar el ratón */
+        margin-left: -10px; /* Espacio entre botones */
     }
 
     </style>
-
-
 
 
 
@@ -258,10 +257,10 @@
         </div>
 
         <div class="navbar-menu">
-            <a href="http://localhost/sistema-lafamilia/sis-familia/public/welcome">Inicio</a>
-            <a href="http://localhost/sistema-lafamilia/sis-familia/public/nosotros">Nosotros</a>
-            <a href="http://localhost/sistema-lafamilia/sis-familia/public/contacto">Contáctanos</a>
-            <a href="http://localhost/sistema-lafamilia/sis-familia/public/tienda">Tienda Virtual</a>
+            <a href="http://localhost/sistema-lafamilia/TABLA-FAMILIA/public/welcome">Inicio</a>
+            <a href="http://localhost/sistema-lafamilia/TABLA-FAMILIA/public/nosotros">Nosotros</a>
+            <a href="http://localhost/sistema-lafamilia/TABLA-FAMILIA/public/contacto">Contáctanos</a>
+            <a href="http://localhost/sistema-lafamilia/TABLA-FAMILIA/public/tienda">Tienda Virtual</a>
         </div>
 
         <div class="navbar-search">
@@ -283,7 +282,8 @@
         <div class="navbar-menu">
             @if(Auth::check()) <!-- Verifica si hay un usuario autenticado -->
                 <span class="navbar-welcome">Hola, {{ Auth::user()->nombre }}!</span> <!-- Muestra el nombre del usuario -->
-                <form action="{{ route('login') }}" method="POST" style="display: inline;">
+                
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
                     @csrf <!-- Incluye el token CSRF para la seguridad -->
                     <button type="submit" class="logout-btn">Cerrar sesión</button> <!-- Botón para cerrar sesión -->
                 </form>
@@ -292,6 +292,7 @@
                 <a href="{{ route('register') }}"><button class="register-btn">Registrarse</button></a>
             @endif
         </div>
+        
 
 
         

@@ -37,7 +37,7 @@ class RegisterController extends Controller
             'apellido' => ['required', 'string', 'max:100'],
             'usuario' => ['required', 'string', 'max:50', 'unique:usuario'],
             'correo' => ['required', 'string', 'email', 'max:100', 'unique:usuario'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:5', 'confirmed'],
         ]);
     }
 
@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'correo' => $data['correo'],
             'foto' => $data['foto'] ?? null,
             'estado' => 1, // Activo por defecto
-            'tipo_usuario' => $data['tipo_usuario'], // Tipo de usuario (Cliente o Administrador)
+            'tipo_usuario' => 2, // Tipo de usuario (Cliente o Administrador)
         ]);
     }
 
