@@ -6,6 +6,10 @@
 
 @section('content')
 
+
+ {{-- Incluir la barra de navegación y pasar las categorías --}}
+
+
 <style>
     /* Estilo para el mensaje de bienvenida */
     .navbar-welcome {
@@ -390,7 +394,7 @@
 
 
 <body class="antialiased">
-    <h1>Hola mundo</h1>
+    <
 
     
     <div class="product-section">

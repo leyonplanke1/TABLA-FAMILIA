@@ -10,14 +10,23 @@ use App\Models\User;
 class ProductosTiendaController extends Controller
 {
     
+
+    
     // Listar todos los productos con su categoría
-    public function index()
+    public function index(Request $request)
     {
-        //$productos = Producto::with('categoria')->get(); // Carga productos con su categoría
-        //$categorias = Categoria::all(); // Cargar todas las categorías para el select
-        //return view('vistas.productos.index', compact('productos','categorias' ));
-        $productos = Producto::all();
-        return view('vistas.tienda', ['productos' => $productos]);
+        $categoriaSeleccionada = $request->get('categoria'); // Captura la categoría seleccionada
+
+        if ($categoriaSeleccionada) {
+            $productos = Producto::whereHas('categoria', function ($query) use ($categoriaSeleccionada) {
+                $query->where('nombre', $categoriaSeleccionada);
+            })->get();
+        } else {
+            $productos = Producto::all(); // Si no hay categoría seleccionada, muestra todos
+        }
+
+        $categorias = Categoria::all(); // Cargar todas las categorías para la vista
+        return view('vistas.tienda', compact('productos', 'categorias'));
     }
 
    // Agregar un producto al carrito

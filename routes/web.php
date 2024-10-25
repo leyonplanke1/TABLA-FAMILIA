@@ -28,6 +28,10 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/buscar', [ProductosController::class, 'buscar'])->name('buscar');
+
+
+
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/welcome'); // Redirige a la página welcome
@@ -82,6 +86,11 @@ Route::middleware(['auth', 'role:cliente'])->group(function () {
     Route::post('/cart/add/{id_producto}', [ProductosTiendaController::class, 'addToCart'])->name('cart.add');
     Route::get('/remove-from-cart/{id_producto}', [ProductosTiendaController::class, 'removeFromCart'])->name('cart.remove');
     Route::get('/clear-cart', [ProductosTiendaController::class, 'clearCart'])->name('cart.clear');
+    
+
+
+  
+
 
 
     

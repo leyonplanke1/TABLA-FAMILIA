@@ -3,6 +3,8 @@
 @section('title', 'Tienda Virtual - La Familia')
 @section('content')
 
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

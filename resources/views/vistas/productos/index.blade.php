@@ -218,13 +218,11 @@
                             <option value="0">Inactivo</option>
                         </select>
                     </div>
-                    <td>
-                        @if($producto->foto && file_exists(public_path('images/' . $producto->foto)))
-                            <img src="{{ asset('images/' . $producto->foto) }}" alt="{{ $producto->nombre }}" width="50" height="50">
-                        @else
-                            <p>Sin imagen</p>
-                        @endif
-                    </td>
+                    <div class="form-group">
+                        <label for="foto">Imagen</label>
+                        <input type="file" class="form-control-file" id="foto" name="foto">
+                    </div>
+                
                     <div class="mb-3">
                         <label for="id_categoria" class="form-label">Categoría</label>
                         <select name="id_categoria" class="form-control">

@@ -12,11 +12,20 @@
     <!-- CSS externo -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery (Opcional si lo usas) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-
+   
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
     <style>
@@ -35,16 +44,17 @@
 
         /* Header/Navbar */
         header {
-            background-color: #D2691E;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 100;
-        }
+    background-color: #D2691E;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fijar en la parte superior */
+    top: 0; /* Asegura que esté en la parte superior */
+    width: 100%; /* Ocupar todo el ancho */
+    z-index: 100; /* Asegurar que quede sobre otros elementos */
+}
 
         .navbar-brand {
             display: flex;
@@ -237,7 +247,124 @@
         margin-left: -10px; /* Espacio entre botones */
     }
 
+    .navbar-search {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.navbar-search input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    width: 300px;
+    outline: none;
+}
+
+.navbar-search button {
+    padding: 10px;
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.navbar-search button:hover {
+    background-color: #d2691e;
+}
+
+.navbar-search i {
+    font-size: 18px;
+}
+
+.page-content {
+    margin-top: 80px; /* Ajusta este valor según la altura del header */
+}
+
+#categoriasMenu {
+    background-color: #D2691E;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item a {
+    text-decoration: none;
+    color: #333;
+}
+
+.list-group-item a:hover {
+    color: #d2691e;
+    font-weight: bold;
+}
+/* Contenedor del dropdown */
+.dropdown.avanzado {
+    position: relative;
+    display: inline-block;
+}
+
+/* Menú desplegable oculto por defecto */
+.dropdown-menu {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+    z-index: 1050;
+}
+
+/* Mostrar el menú al hacer hover sobre el contenedor */
+.dropdown.avanzado:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilo para los enlaces del menú */
+.dropdown-item {
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Efecto hover sobre cada opción */
+.dropdown-item:hover {
+    background-color: #FF5733;
+    color: black;
+    border-radius: 5px;
+}
+
+/* Estilo del botón principal */
+#dropdownTienda {
+    background-color: #D2691E;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#dropdownTienda:hover {
+    background-color: #2C3E50;
+    transform: scale(1.05);
+}
+
+
     </style>
+
+
 
 
 
@@ -245,9 +372,19 @@
     @yield('titulo', "inicio")
 </title>
 
+
+
+
+
+
+
 </head>
 
 <body>
+
+
+
+    
     <!-- Header/Navbar -->
     <header>
         <div class="navbar-brand">
@@ -260,13 +397,30 @@
             <a href="http://localhost/sistema-lafamilia/TABLA-FAMILIA/public/welcome">Inicio</a>
             <a href="http://localhost/sistema-lafamilia/TABLA-FAMILIA/public/nosotros">Nosotros</a>
             <a href="http://localhost/sistema-lafamilia/TABLA-FAMILIA/public/contacto">Contáctanos</a>
-            <a href="http://localhost/sistema-lafamilia/TABLA-FAMILIA/public/tienda">Tienda Virtual</a>
-        </div>
+             <!-- Menú desplegable para Tienda Virtual -->
+    
+    
+    
+             <div class="dropdown avanzado">
+                <button class="btn btn-secondary dropdown-toggle" id="dropdownTienda">
+                    Tienda Virtual
+                </button>
+        
+                <div class="dropdown-menu" id="categoriasMenu">
+                    @foreach($categorias as $categoria)
+                        <a class="dropdown-item" href="{{ url('tienda?categoria=' . urlencode($categoria->nombre)) }}">
+                            {{ $categoria->nombre }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+</div>
 
-        <div class="navbar-search">
-            <input type="text" placeholder="Buscar producto">
-            <button><i class="fa fa-search"></i></button>
-        </div>
+
+        <form action="{{ route('buscar') }}" method="GET" class="navbar-search">
+            <input type="text" name="query" placeholder="Buscar producto" required />
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
 
         <div class="cart-icon">
             <a href="{{ route('cart.index') }}">
@@ -311,6 +465,22 @@
 
     </footer>
 
-    
+    <script>
+        $(document).ready(function() {
+            $('#resultadosModal').modal('show'); // Mostrar el modal al cargar la página
+        });
+    </script>
+
+<script>$(document).ready(function () {
+    $(document).click(function (event) {
+        var clickover = $(event.target);
+        var isOpen = $("#categoriasMenu").hasClass("show");
+        if (isOpen && !clickover.closest('#dropdownTienda').length) {
+            $("#categoriasMenu").collapse('hide');
+        }
+    });
+});</script>
+
+
 </body>
 </html>

@@ -5,12 +5,17 @@
 <style>
 /* Estilos personalizados */
 .container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #e9ecef;
+    min-height: 120vh; /* Asegura que ocupe toda la altura del viewport */
+    display: flex; /* Activa Flexbox */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    background-color: #e9ecef; /* Fondo claro */
+    padding: 20px; /* Evita que el contenido toque los bordes */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
 }
+
+
+
 
 .card {
     border-radius: 20px;
@@ -21,7 +26,7 @@
 }
 
 .card-header {
-    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    background: linear-gradient(135deg, #FF8C00, #D2691E);
     color: white;
     text-align: center;
     font-weight: bold;
@@ -31,7 +36,7 @@
 }
 
 .card-body {
-    padding: 40px;
+    padding: 30px;
 }
 
 .form-control {
@@ -47,7 +52,7 @@
 }
 
 .btn-gradient {
-    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    background: linear-gradient(135deg, #D2691E, #FF8C00);
     border: none;
     color: white;
     padding: 12px 30px;

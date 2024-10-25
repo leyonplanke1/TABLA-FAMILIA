@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use App\Models\Categoria;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        View::composer('layouts.navbar', function ($view) {
+            $categorias = Categoria::all();
+            $view->with('categorias', $categorias);
+        });
+
+
+
         $total_usuario=DB::select("select count(*) as total from usuario where estado=1 ");
         View::share("total_usuario", $total_usuario[0]->total);
 
@@ -60,4 +69,9 @@ class AppServiceProvider extends ServiceProvider
         
 
     }
+
+   
+
+
+
 }
