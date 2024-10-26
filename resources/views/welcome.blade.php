@@ -375,7 +375,7 @@
 
 
 
-<h1>hola</h1>
+
 <section id="carrusel">
 
     <div class="carousel">
