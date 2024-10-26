@@ -36,6 +36,7 @@ class RegisterController extends Controller
             'nombre' => ['required', 'string', 'max:100'],
             'apellido' => ['required', 'string', 'max:100'],
             'usuario' => ['required', 'string', 'max:50', 'unique:usuario'],
+            'dni' => ['required', 'numeric', 'digits:8', 'unique:usuario'], // Validación del DNI
             'correo' => ['required', 'string', 'email', 'max:100', 'unique:usuario'],
             'password' => ['required', 'string', 'min:5', 'confirmed'],
         ]);
@@ -48,13 +49,14 @@ class RegisterController extends Controller
             'nombre' => $data['nombre'],
             'apellido' => $data['apellido'],
             'usuario' => $data['usuario'],
+            'dni' => $data['dni'], // Guardar el DNI
             'password' => Hash::make($data['password']),
             'telefono' => $data['telefono'] ?? null,
             'direccion' => $data['direccion'] ?? null,
             'correo' => $data['correo'],
             'foto' => $data['foto'] ?? null,
             'estado' => 1, // Activo por defecto
-            'tipo_usuario' => 2, // Tipo de usuario (Cliente o Administrador)
+            'tipo_usuario' => 2, // Tipo de usuario (Cliente por defecto)
         ]);
     }
 

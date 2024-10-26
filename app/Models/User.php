@@ -21,6 +21,7 @@ class User extends Authenticatable
         'apellido',
         'usuario',
         'password',
+        'dni',            // Agregamos el campo DNI
         'telefono',
         'direccion',
         'correo',
@@ -38,12 +39,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     public function tipo()
     {
         return $this->belongsTo(TipoUsuario::class, 'tipo_usuario', 'id_tipo');
     }
-
 
     // Método para verificar el rol del usuario
     public function esAdmin()
@@ -56,3 +55,4 @@ class User extends Authenticatable
         return $this->tipo_usuario === 2; // 2 para cliente
     }
 }
+

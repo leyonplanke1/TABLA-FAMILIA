@@ -5,17 +5,14 @@
 <style>
 /* Estilos personalizados */
 .container {
-    min-height: 120vh; /* Asegura que ocupe toda la altura del viewport */
-    display: flex; /* Activa Flexbox */
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
-    background-color: #e9ecef; /* Fondo claro */
-    padding: 20px; /* Evita que el contenido toque los bordes */
-    box-sizing: border-box; /* Incluye padding en el ancho total */
+    min-height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9ecef;
+    padding: 20px;
+    box-sizing: border-box;
 }
-
-
-
 
 .card {
     border-radius: 20px;
@@ -106,11 +103,14 @@
                 </div>
 
                 <div class="mb-4">
+                    <label for="dni" class="form-label">DNI</label>
+                    <input id="dni" type="text" name="dni" class="form-control" placeholder="Ingresa tu DNI" required>
+                </div>
+
+                <div class="mb-4">
                     <label for="correo" class="form-label">Correo Electrónico</label>
                     <input id="correo" type="email" name="correo" class="form-control" placeholder="Ingresa tu correo electrónico" required>
                 </div>
-
-               
 
                 <div class="mb-4">
                     <label for="password" class="form-label">Contraseña</label>
@@ -134,5 +134,3 @@
 </div>
 
 @endsection
-
-

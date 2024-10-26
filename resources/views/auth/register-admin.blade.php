@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register.admin') }}">
                         @csrf
+                        
                         <div class="form-group">
                             <label for="nombre">{{ __('Nombre') }}</label>
                             <input id="nombre" type="text" class="form-control" name="nombre" required autofocus>
@@ -18,6 +19,11 @@
                         <div class="form-group">
                             <label for="apellido">{{ __('Apellido') }}</label>
                             <input id="apellido" type="text" class="form-control" name="apellido" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dni">{{ __('DNI') }}</label>
+                            <input id="dni" type="text" class="form-control" name="dni" required placeholder="Ingresa tu DNI">
                         </div>
 
                         <div class="form-group">
@@ -40,7 +46,7 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary mt-3">
                             {{ __('Registrar Administrador') }}
                         </button>
                     </form>

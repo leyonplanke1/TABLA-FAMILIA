@@ -23,9 +23,9 @@
                 <th scope="col">Usuario</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
+                <th scope="col">DNI</th>
                 <th scope="col">Teléfono</th>
                 <th scope="col">Correo</th>
-               
                 <th scope="col">Estado</th>
                 <th scope="col">Tipo Usuario</th>
                 <th scope="col">Acciones</th>
@@ -38,21 +38,19 @@
                 <td>{{ $usuario->usuario }}</td>
                 <td>{{ $usuario->nombre }}</td>
                 <td>{{ $usuario->apellido }}</td>
+                <td>{{ $usuario->dni }}</td>
                 <td>{{ $usuario->telefono }}</td>
                 <td>{{ $usuario->correo }}</td>
-                
                 <td>{{ $usuario->estado ? 'Activo' : 'Inactivo' }}</td>
                 <td>{{ $usuario->tipo_usuario }}</td>
                 <td>
                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#verUsuarioModal{{ $usuario->id_usuario }}">Ver</button>
                     <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editarUsuarioModal{{ $usuario->id_usuario }}">Editar</button>
-                    <!-- Botón Eliminar con Confirmación -->
                     <form action="{{ route('usuarios.destroy', $usuario->id_usuario) }}" method="POST" style="display: inline-block;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de querer eliminar este usuario?');">Eliminar</button>
                     </form>
-
                 </td>
             </tr>
 
@@ -70,9 +68,9 @@
                             <p><strong>Usuario:</strong> {{ $usuario->usuario }}</p>
                             <p><strong>Nombre:</strong> {{ $usuario->nombre }}</p>
                             <p><strong>Apellido:</strong> {{ $usuario->apellido }}</p>
+                            <p><strong>DNI:</strong> {{ $usuario->dni }}</p>
                             <p><strong>Teléfono:</strong> {{ $usuario->telefono }}</p>
                             <p><strong>Correo:</strong> {{ $usuario->correo }}</p>
-                            
                             <p><strong>Estado:</strong> {{ $usuario->estado ? 'Activo' : 'Inactivo' }}</p>
                             <p><strong>Tipo Usuario:</strong> {{ $usuario->tipo_usuario }}</p>
                         </div>
@@ -110,6 +108,10 @@
                                     <input type="text" class="form-control" name="apellido" value="{{ $usuario->apellido }}" required>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="dni" class="form-label">DNI</label>
+                                    <input type="text" class="form-control" name="dni" value="{{ $usuario->dni }}" required>
+                                </div>
+                                <div class="mb-3">
                                     <label for="telefono" class="form-label">Teléfono</label>
                                     <input type="text" class="form-control" name="telefono" value="{{ $usuario->telefono }}">
                                 </div>
@@ -117,7 +119,6 @@
                                     <label for="correo" class="form-label">Correo</label>
                                     <input type="email" class="form-control" name="correo" value="{{ $usuario->correo }}">
                                 </div>
-                                
                                 <div class="mb-3">
                                     <label for="estado" class="form-label">Estado</label>
                                     <select class="form-control" name="estado" required>
@@ -161,24 +162,42 @@
             <div class="modal-body">
                 <form action="{{ route('usuarios.store') }}" method="POST">
                     @csrf
+                    <div class="mb-3">
+                        <label for="dni" class="form-label">DNI</label>
+                        <div class="input-group">
+                          
+                            <input type="text" id="dni" class="form-control" name="dni" value="{{ old('dni') }}" required>
 
-                 
+                            <div id="spinner" class="spinner-border text-primary" role="status" style="display: none;">
+                                <span class="sr-only">Cargando...</span>
+                            </div>
+                            <div class="input-group-append">
+                                
+                                <button class="btn btn-outline-secondary" type="button" id="btnBuscarDNI">
+                                    <i class="fas fa-search"></i> <!-- Ícono de búsqueda -->
+                                </button>
+                            </div>
+                        </div>
+                        <div id="spinner" class="spinner-border text-primary" role="status" style="display: none;">
+                            <span class="sr-only">Cargando...</span>
+                        </div>
+                    </div>
 
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" required>
+                        <input type="text" id="nombre" class="form-control" name="nombre" value="{{ old('nombre') }}" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="apellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" name="apellido" value="{{ old('apellido') }}" required>
+                        <label for="apellido" class="form-label">Apellidos</label>
+                        <input type="text" id="apellido" class="form-control" name="apellido" value="{{ old('apellido') }}" required>
                     </div>
-
 
                     <div class="mb-3">
                         <label for="usuario" class="form-label">Usuario</label>
                         <input type="text" class="form-control" name="usuario" value="{{ old('usuario') }}" required>
                     </div>
+
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
                         <input type="password" class="form-control" name="password" required>
@@ -190,16 +209,10 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="direccion" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" name="direccion" value="{{ old('direccion') }}">
-                    </div>
-
-                    <div class="mb-3">
                         <label for="correo" class="form-label">Correo</label>
                         <input type="email" class="form-control" name="correo" value="{{ old('correo') }}">
                     </div>
 
-                    
                     <div class="mb-3">
                         <label for="estado" class="form-label">Estado</label>
                         <select class="form-control select2" name="estado" required>
@@ -235,10 +248,5 @@
         </ul>
     </div>
 @endif
-
-
-
-
-
-
 @endsection
+

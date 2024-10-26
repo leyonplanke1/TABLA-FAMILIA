@@ -94,11 +94,22 @@
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- jQuery (Opcional si lo usas) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- api -->
+<!-- jQuery (si lo necesitas) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap (si es necesario) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Tu Script Personalizado -->
+<script src="{{ asset('js/script.js') }}"></script>
+
+<!-- api -->
 
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -106,6 +117,10 @@
 
 
         <style>
+
+
+
+
             .marca {
                 width: 100%;
                 background: rgb(13, 39, 48);
@@ -151,6 +166,13 @@
             padding-top: 80px; /* Alineado con el header */
             overflow-y: auto;
         }
+
+            
+        .spinner-border {
+    margin-left: 10px;
+    width: 2rem;
+    height: 2rem;
+}
 
 
         </style>
@@ -615,6 +637,63 @@
         });
     });
 </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    let boton = document.getElementById("btnBuscarDNI");
+    let spinner = document.getElementById("spinner");
+
+    if (boton) {
+        boton.addEventListener("click", traerDatos);
+    }
+
+    function traerDatos() {
+        let dni = document.getElementById("dni").value;
+
+        if (dni.length !== 8) {
+            alert("El DNI debe tener 8 dígitos");
+            return;
+        }
+
+        spinner.style.display = "inline-block"; // Mostrar el spinner
+
+        fetch(`https://apiperu.dev/api/dni/${dni}?api_token=02f4012d0ba37472a24b19be382db6bff0697ef0ff262870bd0767f8f730e5db`)
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        throw new Error("Token de API inválido o caducado.");
+                    } else if (response.status === 404) {
+                        throw new Error("DNI no encontrado.");
+                    } else {
+                        throw new Error("Error en la solicitud a la API.");
+                    }
+                }
+                return response.json();
+            })
+            .then(datos => {
+                if (datos.success) {
+                    console.log(datos.data);
+                    document.getElementById("nombre").value = datos.data.nombres;
+                    document.getElementById("apellido").value =
+                        `${datos.data.apellido_paterno} ${datos.data.apellido_materno}`;
+                } else {
+                    alert("DNI no encontrado");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert(`Error: ${error.message}`);
+            })
+            .finally(() => {
+                spinner.style.display = "none"; // Ocultar el spinner
+            });
+    }
+});
+
+</script>
+
+
 
 
 
