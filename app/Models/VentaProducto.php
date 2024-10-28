@@ -9,9 +9,9 @@ class VentaProducto extends Model
 {
     use HasFactory;
 
-    protected $table = 'venta_productos'; // Tabla en la base de datos
-    protected $fillable = ['id_venta', 'id_producto', 'cantidad', 'precio']; // Campos que pueden ser asignados masivamente
-    protected $primaryKey = 'id__venta_producto';
+    protected $table = 'venta_detalle'; // Tabla en la base de datos
+    protected $fillable = ['id_venta', 'id_producto', 'cantidad', 'precio', 'descuento','subtotal']; // Campos que pueden ser asignados masivamente
+    protected $primaryKey = 'id_venta_detalle';
     public $timestamps = false;
 
     // Relación con Venta
