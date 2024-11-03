@@ -380,9 +380,9 @@
 
     <div class="carousel">
         <div class="carousel-images">
-            <img src="https://files.oaiusercontent.com/file-s4XagS8jiUVWcV5DPr8H9LiL?se=2024-10-25T01%3A24%3A05Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Ddb048eb1-508f-4bbe-8b5b-3d4795f7695f.webp&sig=oG83BLcCHGvuPih9Sq9rsCeWUVqcK6qxHIF3NdJrUYg%3D" alt="Proyecto 1">
-            <img src="https://files.oaiusercontent.com/file-YCqabcULX3WJx6L99BdVNLDL?se=2024-10-25T01%3A27%3A47Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D8d098f09-c22b-4e2d-b408-9c0072ab1852.webp&sig=3bQoJ3QGybcqkMaEEP0Y3GT3IU%2BUw0RjLauH%2Bg5rjYs%3D" alt="Proyecto 2">
-            <img src="https://files.oaiusercontent.com/file-Eqq4Ujqo0954kSl1ZiooTIlM?se=2024-10-25T01%3A25%3A34Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D4fef244c-5db2-4d81-b7b1-b7a22674dadd.webp&sig=Gg2bTMz9oN0BGKWEkIS97sdxVZV1Sp7kvUvNPz1IiMo%3D" alt="Proyecto 3" width="50px" height="90px">
+            <img src="https://files.oaiusercontent.com/file-9mS7A1qt3vkCATxvFOBVIKn2?se=2024-11-02T03%3A10%3A44Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D030903bd-e838-4590-ba66-ccc81d159f74.webp&sig=3n1jaiGSiLaM5I3baxfiInHTLE5MKufvlTIfSbZHyWw%3D" alt="Proyecto 1" width="50px" height="90px">
+            <img src="https://files.oaiusercontent.com/file-VXMOxtpuz7sJshH3fqH8T7W3?se=2024-11-02T03%3A13%3A42Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Ddb6096df-9914-4dcd-ba57-a92b6e879eb1.webp&sig=sk8M8jrzSOHGtAIx5j/T6zEfd/WQJF8itVm2uUOkx80%3D" alt="Proyecto 2">
+            <img src="https://files.oaiusercontent.com/file-fSpYi4BqEJMprNWTc7iemgjm?se=2024-11-02T03%3A15%3A38Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dab690c16-e017-4a7a-8637-3b482e5dcf51.webp&sig=1HIY5I/M2R6I7s34529edrIrMQ%2BpdrUGx1WzMI6UKTU%3D" alt="Proyecto 3" width="50px" height="90px">
         </div>
         <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
         <button class="next" onclick="moveSlide(1)">&#10095;</button>

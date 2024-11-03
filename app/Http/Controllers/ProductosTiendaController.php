@@ -6,6 +6,8 @@ use App\Models\Producto;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf; // Importar Dompdf
+use Illuminate\Support\Facades\Auth;
 
 class ProductosTiendaController extends Controller
 {
@@ -31,6 +33,7 @@ class ProductosTiendaController extends Controller
 
    // Agregar un producto al carrito
    public function addToCart($id_producto, Request $request)
+   
 {
     $producto = Producto::find($id_producto);
     $cantidad = $request->input('cantidad', 1); // Obtener cantidad o usar 1 por defecto
@@ -60,9 +63,94 @@ class ProductosTiendaController extends Controller
    // Mostrar el conten_productoo del carrito
    public function cart()
    {
-       $cart = session()->get('cart', []); // Obtener el carrito desde la sesión
-       return view('vistas.cart', compact('cart'));
+       // Obtener el carrito desde la sesión
+       $cart = session()->get('cart', []);
+       $total = 0;
+   
+       foreach ($cart as $item) {
+           $total += $item['precio'] * $item['cantidad'];
+       }
+   
+       return view('vistas.cart', compact('cart', 'total'));
    }
+
+   // Método de checkout para procesar el pago y generar el PDF
+   public function checkout(Request $request)
+{
+
+
+    session()->get('cart');
+
+    $cart = session()->get('cart', []);
+    $subtotal = 0;
+
+    // Calcular el subtotal y el precio con IGV para cada producto
+    foreach ($cart as &$item) {
+        $item['precio_con_igv'] = $item['precio'] ; // Aplica IGV al precio unitario
+        $subtotal += $item['precio_con_igv'] * $item['cantidad'];
+    }
+
+    // Asigna el carrito actualizado con precios de IGV a la sesión
+    session()->put('cart', $cart);
+
+   
+
+    // Datos del usuario y otros detalles
+    $usuario = Auth::user();
+    $direccion = $request->input('direccion');
+    $metodoEnvio = $request->input('metodo_envio');
+    $metodoPago = $request->input('metodo_pago');
+    $costoEnvio = $metodoEnvio === 'express' ? 10.00 : 5.00;
+    $costoEnvioConIgv = $costoEnvio ;
+    $totalFinal = $subtotal + $costoEnvioConIgv;
+
+    // Ajuste del costo de envío según el método seleccionado
+    $costoEnvio = $metodoEnvio === 'express' ? 10.00 : 5.00;
+    $costoEnvioConIgv = $costoEnvio ; // Aplica IGV al costo de envío
+    $totalFinal = $subtotal + $costoEnvioConIgv;
+
+    // Generar el PDF con el detalle del carrito
+    $pdf = Pdf::loadView('vistas.recibo', compact('cart', 'subtotal', 'totalFinal', 'usuario', 'direccion', 'metodoEnvio', 'metodoPago', 'costoEnvioConIgv'));
+
+    // Guardar el PDF
+    $pdfPath = 'recibos/recibo_' . time() . '.pdf';
+    $fullPdfPath = public_path($pdfPath);
+
+    // Crea el directorio si no existe
+    if (!file_exists(public_path('recibos'))) {
+        mkdir(public_path('recibos'), 0755, true);
+    }
+
+    // Guarda el PDF en el sistema de archivos
+    $pdf->save($fullPdfPath);
+
+    // Limpia el carrito después del pago
+    session()->forget('cart');
+
+    return view('vistas.checkout', [
+        'pdfUrl' => asset($pdfPath),
+        'metodoPago' => $metodoPago
+    ]);
+}
+
+
+
+   
+
+public function updateCartQuantity(Request $request, $id_producto)
+{
+    $cart = session()->get('cart', []);
+    if (isset($cart[$id_producto])) {
+        $cart[$id]['cantidad'] = $request->input('quantity', 1); // Actualizar cantidad en sesión
+        session()->put('cart', $cart);
+    }
+    return response()->json(['success' => true]);
+}
+
+   
+
+
+
 
    // Eliminar un producto del carrito
    public function removeFromCart($id_producto)

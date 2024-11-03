@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductosTiendaController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ use App\Http\Controllers\UsuariosController;
 */
 
 Route::get('/', function () {
-    return redirect()->route("home");
+    return redirect()->route("welcome");
 });
 
 Auth::routes(['verify' => true]);
@@ -86,7 +87,25 @@ Route::middleware(['auth', 'role:cliente'])->group(function () {
     Route::post('/cart/add/{id_producto}', [ProductosTiendaController::class, 'addToCart'])->name('cart.add');
     Route::get('/remove-from-cart/{id_producto}', [ProductosTiendaController::class, 'removeFromCart'])->name('cart.remove');
     Route::get('/clear-cart', [ProductosTiendaController::class, 'clearCart'])->name('cart.clear');
+    Route::post('/cart/checkout', [ProductosTiendaController::class, 'checkout'])->name('cart.checkout');
+    Route::post('/cart/update/{id_producto}', [ProductosTiendaController::class, 'updateCartQuantity'])->name('cart.updateQuantity');
+
+
+
+    Route::get('/view-pdf/{pdfPath}', function ($pdfPath) {
+        $filePath = public_path($pdfPath);
     
+        // Verificar si el archivo existe
+        if (file_exists($filePath)) {
+            return response()->file($filePath);
+        }
+    
+        return abort(404);
+    })->name('pdf.view');
+    
+
+
+    Route::post('/contacto/enviar', [ContactController::class, 'sendContactForm'])->name('contact.send');
 
 
   

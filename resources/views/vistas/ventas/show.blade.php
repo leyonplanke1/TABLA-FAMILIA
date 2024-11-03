@@ -11,7 +11,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Cliente:</strong> {{ $venta->cliente->nombre }}</p>
+                        <p><strong>Cliente:</strong> {{ $venta->cliente ? $venta->cliente->nombre : 'Sin cliente' }}</p>
+
                         <p><strong>Comprobante:</strong> {{ $venta->comprobante }}</p>
                         <p><strong>Fecha:</strong> {{ $venta->fecha }}</p>
                     </div>
@@ -51,5 +52,6 @@
 
         <a href="{{ route('ventas.index') }}" class="btn btn-primary mt-3">Volver al Listado</a>
     </div>
+    
 @endsection
 

@@ -227,9 +227,32 @@
     <!-- Sección de Contacto -->
     <div class="contact-container" id="contacto">
         <!-- Formulario de Contacto -->
+
+        
+
+
         <div class="contact-form">
+
+  <!-- Mensaje de Éxito/Error -->
+  @if(session('success'))
+  <div style="color: green; background-color: #d4edda; padding: 8px; border-radius: 5px; font-size: 14px; margin-bottom: 10px; text-align: center;">
+      {{ session('success') }}
+  </div>
+@endif
+
+@if(session('error'))
+  <div style="color: red; background-color: #f8d7da; padding: 8px; border-radius: 5px; font-size: 14px; margin-bottom: 10px; text-align: center;">
+      {{ session('error') }}
+  </div>
+@endif
+
             <h2>Envíanos un Mensaje</h2>
-            <form action="#" method="POST">
+
+           
+
+
+            <form action="{{ route('contact.send') }}" method="POST">
+                @csrf
                 <input type="text" name="nombre" placeholder="Tu Nombre" required>
                 <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
                 <textarea name="mensaje" rows="5" placeholder="Tu Mensaje" required></textarea>

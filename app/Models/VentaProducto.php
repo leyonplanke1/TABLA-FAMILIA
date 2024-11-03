@@ -26,7 +26,11 @@ class VentaProducto extends Model
         return $this->belongsTo(Producto::class, 'id_producto', 'id_producto');
     }
 
-    
+    public function usuario()
+{
+    return $this->belongsTo(Usuario::class, 'id_usuario');
+}
+
 
 
 }
