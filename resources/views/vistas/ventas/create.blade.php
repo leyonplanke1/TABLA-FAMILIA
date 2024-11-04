@@ -33,10 +33,6 @@
                             <label for="precio">Precio de venta:</label>
                             <input type="number" class="form-control" id="precio" readonly>
                         </div>
-                        <div class="col">
-                            <label for="descuento">Descuento:</label>
-                            <input type="number" class="form-control" id="descuento" value="0" min="0">
-                        </div>
                     </div>
 
                     <button type="button" class="btn btn-primary mt-3" id="agregar_producto">Agregar</button>
@@ -51,32 +47,30 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="cliente_select">Cliente:</label>
-                        <select id="cliente_select" name="id_cliente" class="form-control" required>
-                            <option value="" disabled selected>Seleccione un cliente</option>
-                            @foreach($clientes as $cliente)
-                                <option value="{{ $cliente->id_cliente }}">{{ $cliente->nombre }}</option>
+                        <label for="usuario_select">Usuario:</label>
+                        <select id="usuario_select" name="id_usuario" class="form-control" required>
+                            <option value="" disabled selected>Seleccione un usuario</option>
+                            @foreach($usuarios as $usuario)
+                                <option value="{{ $usuario->id_usuario }}">{{ $usuario->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="comprobante">Comprobante:</label>
-                        <input type="text" class="form-control" name="comprobante" id="comprobante" required>
-                    </div>
-
                     <div class="form-row">
-                        <div class="col">
-                            <label for="impuesto">Impuesto (IGV):</label>
-                            <input type="number" class="form-control" name="impuesto" id="impuesto" value="1.08" readonly>
-                        </div>
                         <div class="col">
                             <label for="fecha">Fecha:</label>
                             <input type="date" class="form-control" name="fecha" id="fecha" required>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success mt-3">Guardar</button>
+                    
+
+
+                    <!-- En tu HTML: Añade un ID al botón de guardar -->
+<button type="submit" id="guardar_venta" class="btn btn-success mt-3">
+    Guardar <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+</button>
+
                 </div>
             </div>
         </div>
@@ -89,21 +83,34 @@
                 <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Precio Venta</th>
-                <th>Descuento</th>
                 <th>Subtotal</th>
                 <th>Acción</th>
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+            
+        </tbody>
     </table>
 
     <!-- Campo oculto para enviar los productos -->
     <input type="hidden" name="productos" id="productos_input">
 </form>
 
+
+ 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
 
 <script>
     $(document).ready(function () {
@@ -119,7 +126,6 @@
             const productoSelect = $('#producto_select');
             const cantidad = $('#cantidad').val();
             const precio = $('#precio').val();
-            const descuento = $('#descuento').val();
             const productoId = productoSelect.val();
             const productoNombre = productoSelect.find(':selected').text();
 
@@ -128,14 +134,13 @@
                 return;
             }
 
-            const subtotal = (cantidad * precio) - descuento;
+            const subtotal = cantidad * precio;
             const row = `
                 <tr data-id="${productoId}">
                     <td>${tablaProductos.children().length + 1}</td>
                     <td>${productoNombre}</td>
                     <td>${cantidad}</td>
                     <td>S/ ${precio}</td>
-                    <td>S/ ${descuento}</td>
                     <td>S/ ${subtotal.toFixed(2)}</td>
                     <td><button class="btn btn-danger btn-sm eliminar">Eliminar</button></td>
                 </tr>
@@ -151,13 +156,16 @@
         $('#ventaForm').on('submit', function (e) {
             e.preventDefault();
 
+            // Deshabilitar botón y mostrar spinner
+            $('#guardar_venta').prop('disabled', true);
+            $('#spinner').removeClass('d-none');
+
             const productos = [];
             $('#tabla_productos tbody tr').each(function () {
                 const row = $(this);
                 const productoId = row.data('id');
                 const cantidad = row.find('td:eq(2)').text();
-                const descuento = row.find('td:eq(4)').text(); // Capturar el descuento del producto
-                productos.push({ id_producto: productoId, cantidad: cantidad, descuento: descuento });
+                productos.push({ id_producto: productoId, cantidad: cantidad });
             });
 
             const formData = $(this).serializeArray();
@@ -168,12 +176,17 @@
                 method: 'POST',
                 data: formData,
                 success: function (response) {
+                    // Redirigir al listado de ventas si se guarda correctamente
                     window.location.href = "{{ route('ventas.index') }}";
                 },
                 error: function (error) {
                     alert('Error al guardar la venta.');
+                    // Habilitar botón y ocultar spinner en caso de error
+                    $('#guardar_venta').prop('disabled', false);
+                    $('#spinner').addClass('d-none');
                 }
             });
         });
     });
 </script>
+

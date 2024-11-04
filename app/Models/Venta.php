@@ -11,7 +11,7 @@ class Venta extends Model
 
     protected $table = 'venta'; // Tabla en la base de datos
     protected $primaryKey = 'id_venta';
-    protected $fillable = ['id_cliente', 'fecha', 'total', 'descuento', 'pagoTotal']; // Campos que pueden ser asignados masivamente
+    protected $fillable = ['id_usuario', 'fecha', 'total', 'descuento', 'pagoTotal']; // Campos que pueden ser asignados masivamente
     public $timestamps = false;
 
     // Relación con VentaProducto
@@ -26,16 +26,15 @@ class Venta extends Model
     }
 
 
-    public function cliente()
-    {
-        return $this->belongsTo(Cliente::class, 'id_cliente', 'id_cliente');
-    }
+   
 
 
-        // En el modelo Venta
+    // En el modelo Venta
 public function usuario()
 {
-    return $this->belongsTo(Usuario::class, 'id_usuario');
+    return $this->belongsTo(Usuario::class, 'id_usuario', 'id_usuario');
 }
+
+
 
 }

@@ -59,4 +59,10 @@ class Usuario extends Authenticatable
     {
         return $this->hasMany(Venta::class, 'id_usuario');
     }
+
+    public function getFullNameAttribute()
+{
+    return $this->nombre . ' ' . $this->apellido;
+}
+
 }

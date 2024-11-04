@@ -17,12 +17,12 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="cliente_select">Editar Cliente:</label>
-                                <select id="cliente_select" name="id_cliente" class="form-control" required>
+                                <select id="cliente_select" name="id_usuario" class="form-control" required>
                                     <option value="" disabled>Seleccione un cliente</option>
-                                    @foreach($clientes as $cliente)
-                                        <option value="{{ $cliente->id_cliente }}" 
-                                                {{ $cliente->id_cliente == $venta->id_cliente ? 'selected' : '' }}>
-                                            {{ $cliente->nombre }}
+                                    @foreach($usuarios as $usuario)
+                                        <option value="{{ $usuario->id_usuario }}" 
+                                                {{ $usuario->id_usuario == $venta->id_usuario ? 'selected' : '' }}>
+                                            {{ $usuario->nombre }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -100,6 +100,9 @@
                 </tbody>
             </table>
 
+            <!-- Campos ocultos para total y pagoTotal -->
+            <input type="hidden" name="total" id="total" value="{{ $venta->total ?? 0 }}">
+            <input type="hidden" name="pagoTotal" id="pagoTotal" value="{{ $venta->pagoTotal ?? 0 }}">
             <input type="hidden" name="productos" id="productos_input">
 
             <button type="submit" class="btn btn-success mt-3">Guardar Cambios</button>
@@ -126,8 +129,8 @@
                 const productoId = productoSelect.val();
                 const productoNombre = productoSelect.find(':selected').text();
 
-                if (!productoId) {
-                    alert('Seleccione un producto');
+                if (!productoId || !cantidad || !precio) {
+                    alert('Seleccione un producto y complete todos los campos');
                     return;
                 }
 
@@ -145,10 +148,12 @@
                 `;
 
                 tablaProductos.append(row);
+                actualizarTotales();  // Actualiza los totales después de agregar
             });
 
             tablaProductos.on('click', '.eliminar', function () {
                 $(this).closest('tr').remove();
+                actualizarTotales();  // Actualiza los totales después de eliminar
             });
 
             $('#ventaEditForm').on('submit', function (e) {
@@ -158,8 +163,8 @@
                 $('#tabla_productos tbody tr').each(function () {
                     const row = $(this);
                     const productoId = row.data('id');
-                    const cantidad = row.find('td:eq(2)').text();
-                    const descuento = row.find('td:eq(4)').text();
+                    const cantidad = parseInt(row.find('td:eq(2)').text());
+                    const descuento = parseFloat(row.find('td:eq(4)').text()) || 0;
                     productos.push({ id_producto: productoId, cantidad: cantidad, descuento: descuento });
                 });
 
@@ -173,11 +178,25 @@
                     success: function () {
                         window.location.href = "{{ route('ventas.index') }}";
                     },
-                    error: function () {
-                        alert('Error al guardar la venta.');
+                    error: function (xhr) {
+                        alert('Error al guardar la venta: ' + xhr.responseText);
                     }
                 });
             });
+
+            function actualizarTotales() {
+                let total = 0;
+
+                $('#tabla_productos tbody tr').each(function() {
+                    const precio = parseFloat($(this).find('td:eq(3)').text().replace('S/', '').trim()) || 0;
+                    const descuento = parseFloat($(this).find('td:eq(4)').text().replace('S/', '').trim()) || 0;
+                    const subtotal = precio - descuento;
+                    total += subtotal;
+                });
+
+                $('#total').val(total.toFixed(2));
+                $('#pagoTotal').val(total.toFixed(2)); // Puedes cambiar la lógica aquí si es necesario
+            }
         });
     </script>
 @endsection

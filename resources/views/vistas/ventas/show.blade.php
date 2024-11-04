@@ -11,15 +11,15 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Cliente:</strong> {{ $venta->cliente ? $venta->cliente->nombre : 'Sin cliente' }}</p>
+                        <p><strong>Cliente:</strong> {{ $venta->usuario ? $venta->usuario->nombre . ' ' . $venta->usuario->apellido : 'Sin cliente' }}</p> <!-- Concatenar nombre y apellido -->
 
                         <p><strong>Comprobante:</strong> {{ $venta->comprobante }}</p>
                         <p><strong>Fecha:</strong> {{ $venta->fecha }}</p>
                     </div>
                     <div class="col-md-6">
                         <p><strong>Impuesto (IGV):</strong> {{ $venta->impuesto }}</p>
-                        <p><strong>Total:</strong> S/ {{ number_format($venta->total, 2) }}</p>
-                        <p><strong>Descuento:</strong> S/ {{ number_format($venta->descuento, 2) }}</p>
+                        <p><strong>Total:</strong> S/ {{ number_format( $venta->total, 2) }}</p>
+                       
                         <p><strong>Total Pagado:</strong> S/ {{ number_format($venta->pagoTotal, 2) }}</p>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
-                    <th>Descuento</th>
+                    
                     <th>Subtotal</th>
                 </tr>
             </thead>
@@ -43,8 +43,8 @@
                         <td>{{ $producto->producto->nombre }}</td>
                         <td>{{ $producto->cantidad }}</td>
                         <td>S/ {{ number_format($producto->precio, 2) }}</td>
-                        <td>S/ {{ number_format($producto->descuento, 2) }}</td>
-                        <td>S/ {{ number_format($producto->subtotal, 2) }}</td>
+                        
+                        <td>S/ {{ number_format($producto->precio * $producto->cantidad, 2) }}</td> <!-- Modificado para calcular el subtotal -->
                     </tr>
                 @endforeach
             </tbody>
@@ -52,6 +52,4 @@
 
         <a href="{{ route('ventas.index') }}" class="btn btn-primary mt-3">Volver al Listado</a>
     </div>
-    
 @endsection
-
