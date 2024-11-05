@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Producto;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Usuario;
 use Barryvdh\DomPDF\Facade\Pdf; // Importar Dompdf
 use Illuminate\Support\Facades\Auth;
+use App\Models\Venta;
+use App\Models\VentaProducto;
 
 class ProductosTiendaController extends Controller
 {
@@ -108,6 +110,31 @@ class ProductosTiendaController extends Controller
     $costoEnvio = $metodoEnvio === 'express' ? 10.00 : 5.00;
     $costoEnvioConIgv = $costoEnvio ; // Aplica IGV al costo de envío
     $totalFinal = $subtotal + $costoEnvioConIgv;
+
+
+    // Crear registro de la venta
+    $venta = new Venta();
+    $venta->id_usuario = $usuario->id_usuario; // Guardar el ID del usuario autenticado
+    
+    
+    $venta->total = $totalFinal; // Guarda el total
+    $venta->pagoTotal = $totalFinal;  // Guarda el total
+    $venta->fecha = now(); // Guarda la fecha actual
+    $venta->save(); // Guarda la venta en la base de datos
+
+        // Guardar detalles de la venta en venta_detalle
+        
+        // Guardar detalles de la venta en venta_detalle
+   /*foreach ($cart as $id_producto => $item) {
+    $detalle = new VentaProducto(); // Instancia del modelo correcto
+    $detalle->id_venta = $venta->id_venta; // Referencia a la venta recién creada
+    $detalle->id_producto = $id_producto; // ID del producto
+    $detalle->cantidad = $item['cantidad']; // Cantidad del producto
+    $detalle->precio = $item['precio']; // Precio del producto
+    $detalle->subtotal = $item['precio'] * $item['cantidad']; // Calcula el subtotal
+    $detalle->save(); // Guarda el detalle*/
+//}
+        
 
     // Generar el PDF con el detalle del carrito
     $pdf = Pdf::loadView('vistas.recibo', compact('cart', 'subtotal', 'totalFinal', 'usuario', 'direccion', 'metodoEnvio', 'metodoPago', 'costoEnvioConIgv'));
