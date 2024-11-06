@@ -23,7 +23,7 @@ class VentaProducto extends Model
     // Relación con Producto
     public function producto()
     {
-        return $this->belongsTo(Producto::class, 'id_producto', 'id_producto');
+        return $this->belongsTo(Producto::class, 'id_producto');
     }
 
     public function usuario()

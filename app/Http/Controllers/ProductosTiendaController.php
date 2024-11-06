@@ -132,8 +132,8 @@ class ProductosTiendaController extends Controller
     $detalle->cantidad = $item['cantidad']; // Cantidad del producto
     $detalle->precio = $item['precio']; // Precio del producto
     $detalle->subtotal = $item['precio'] * $item['cantidad']; // Calcula el subtotal
-    $detalle->save(); // Guarda el detalle*/
-//}
+    $detalle->save(); // Guarda el detalle
+}*/
         
 
     // Generar el PDF con el detalle del carrito

@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PagoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +90,17 @@ Route::middleware(['auth', 'role:cliente'])->group(function () {
     Route::get('/clear-cart', [ProductosTiendaController::class, 'clearCart'])->name('cart.clear');
     Route::post('/cart/checkout', [ProductosTiendaController::class, 'checkout'])->name('cart.checkout');
     Route::post('/cart/update/{id_producto}', [ProductosTiendaController::class, 'updateCartQuantity'])->name('cart.updateQuantity');
+
+    
+
+    Route::post('/procesar-pago', [PagoController::class, 'procesarPago'])->name('procesar.pago');
+    
+
+// Define las rutas para los procesos de éxito y cancelación de pagos
+Route::post('/payment-success', [PagoController::class, 'success'])->name('payment.success');
+Route::post('/payment-cancel', [PagoController::class, 'cancel'])->name('payment.cancel');
+
+
 
 
 

@@ -148,7 +148,13 @@
             border-radius: 4px;
             padding: 5px;
         }
+
+
     </style>
+
+<script src="https://www.paypal.com/sdk/js?client-id=Ads-LChTmvJJE2Qd13s1dLAQ4RwvP5YoTHYjcrMpS2kyhG0HLlmO-DwNA8ExOI3z5LkvowuQ4sDqGSvc"></script>
+
+
 </head>
 
 <body>
@@ -223,16 +229,80 @@
                 </tbody>
             </table>
 
-            <div class="total">
-                Total a pagar: S/. <span id="total">{{ number_format($total, 2) }}</span>
-            </div>
+           
+                <div class="total">
+                    Total a pagar: S/. <span id="total">{{ number_format($total, 2) }}</span>
+                </div>
+                <!-- Botón de PayPal -->
+<div id="paypal-button-container" style="display:none;"></div>  <!-- Inicialmente oculto -->
 
-            <button type="submit" class="pay-button">Pagar</button>
+<!-- Botón de Pago Contraentrega -->
+<button type="submit" class="pay-button" style="display:none;">Pagar</button> <!-- Inicialmente oculto -->
+
+
+                
+                
+           
+            
          </form>
         @else
             <p>No hay productos en el carrito.</p>
         @endif
     </div>
+
+    
+     
+    <script src="https://www.paypal.com/sdk/js?client-id=Ads-LChTmvJJE2Qd13s1dLAQ4RwvP5YoTHYjcrMpS2kyhG0HLlmO-DwNA8ExOI3z5LkvowuQ4sDqGSvc"></script>
+<script>
+paypal.Buttons({
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: document.getElementById('total').innerText.replace('S/. ', '')  // Asegúrate de extraer solo el valor numérico
+                }
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            console.log('Pago realizado con éxito', details);
+            // Aquí podrías redirigir al usuario a una página de éxito o actualizar tu base de datos.
+        });
+    },
+    onError: function(err) {
+        // Manejo de errores
+        console.error('Error en el pago con PayPal', err);
+    }
+}).render('#paypal-button-container');
+</script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const radioButtons = document.querySelectorAll('input[name="metodo_pago"]');
+        const paypalContainer = document.getElementById('paypal-button-container');
+        const payButton = document.querySelector('.pay-button');
+    
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'paypal') {
+                    paypalContainer.style.display = 'block';
+                    payButton.style.display = 'none';
+                } else {
+                    paypalContainer.style.display = 'none';
+                    payButton.style.display = 'block';
+                }
+            });
+        });
+    });
+    </script>
+    
+
+
+
+
 
     <script>
         function updateQuantity(id, change) {
