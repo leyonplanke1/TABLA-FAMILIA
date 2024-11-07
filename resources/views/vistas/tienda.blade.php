@@ -14,6 +14,57 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0 10px; /* Añade un pequeño margen interno para pantallas pequeñas */
+}
+
+
+/* Dispositivos grandes como tabletas y laptops */
+@media (max-width: 1024px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .card img {
+        height: 200px;
+    }
+}
+
+/* Dispositivos medianos como tabletas pequeñas y móviles horizontales */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .card img {
+        height: 180px;
+    }
+}
+
+/* Dispositivos pequeños como móviles */
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+    .btn-add-cart {
+        padding: 8px; /* Ajusta el tamaño del botón en pantallas pequeñas */
+        font-size: 0.9rem;
+    }
+}
+
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f4f4f4;
@@ -95,6 +146,25 @@
         .btn-add-cart:hover {
             background-color: #D2691E;
         }
+
+
+        .card img {
+    width: 100%; /* Esto hará que la imagen ocupe el ancho completo del contenedor */
+    height: 250px; /* Ajusta la altura según prefieras */
+    object-fit: cover; /* Para que la imagen se ajuste bien sin distorsionarse */
+    border-radius: 30px; /* Opcional: redondea las esquinas */
+}
+
+    
+        .product-img {
+    width: 100%; /* Ancho total del contenedor */
+    height: 250px; /* Altura de la imagen */
+    object-fit: cover; /* Ajuste para que no se distorsione */
+    border-radius: 10px; /* Bordes redondeados opcionales */
+}
+
+
+
     </style>
     
     <div class="tienda-container">
@@ -103,7 +173,7 @@
         <div class="product-grid">
             @foreach ($productos as $producto)
             <div class="card">
-                <img src="{{ asset('images/' . $producto->foto) }}" alt="{{ $producto->nombre }}" class="product-img">
+                <img src="{{ asset('images/' . $producto->foto) }}" alt="{{ $producto->nombre }}"  class="product-img">
                 <div class="card-body">
                     <h3 class="product-title">{{ $producto->nombre }}</h3>
                     <p class="product-price">S/. {{ number_format($producto->precio, 2) }}</p>

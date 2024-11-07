@@ -21,6 +21,7 @@ class Producto extends Model
         'stock',
         'descripcion',
         'estado',
+        'foto',
         'id_categoria'
     ];
 
@@ -34,6 +35,12 @@ class Producto extends Model
     {
         return $this->hasMany(VentaProducto::class, 'id_producto', 'id_producto');
     }
+
+     // Define un accesor para la URL completa de la imagen
+     public function getFotoUrlAttribute()
+     {
+         return asset('images/' . $this->foto);
+     }
 
 
 

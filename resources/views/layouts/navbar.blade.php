@@ -199,7 +199,7 @@
 
         @media (max-width: 768px) {
             .navbar-menu {
-                display: none;
+                display: block;
                 flex-direction: column;
                 position: absolute;
                 top: 60px;
@@ -362,6 +362,168 @@
 }
 
 
+        /* Estilos Globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding-top: 60px; /* Añade espacio para el header fijo */
+}
+
+/* Estilos para la Navbar */
+header {
+    background-color: #D2691E;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navbar-menu a:hover {
+    background-color: #FF5733;
+    color: white;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    /* Ajuste del logo y título */
+    .navbar-brand {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+
+    /* Menú hamburguesa para dispositivos móviles */
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background-color: #D2691E;
+        text-align: center;
+        z-index: 99;
+    }
+
+    .navbar-menu a {
+        padding: 15px 10;
+        border-bottom: 1px solid #FF5733;
+        
+    }
+
+    /* Botón de menú hamburguesa */
+    .hamburger {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: white;
+        cursor: pointer;
+    }
+
+    /* Mostrar menú al hacer clic en el botón */
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    /* Ocultar barra de búsqueda y otros íconos en móviles */
+    .navbar-search,
+    .cart-icon,
+    .navbar-welcome,
+    .login-btn,
+    .register-btn,
+    .logout-btn {
+        display: none;
+    }
+}
+
+/* Ajustes adicionales para pantallas pequeñas */
+@media (max-width: 480px) {
+    /* Tamaños de fuentes y botones más pequeños */
+    .brand-name {
+        font-size: 1.5rem;
+    }
+
+    .navbar-menu a {
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+
+    .cart-count {
+        font-size: 12px;
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Ajuste del tamaño de los íconos */
+    .cart-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+@media (min-width: 769px) {
+    #show-hide-sidebar-toggle, .hamburger {
+        display: none;
+    }
+}
+
+
+/* Estilo de los botones de inicio de sesión y registro en dispositivos móviles */
+.login-btn, .register-btn {
+    display: block;
+    background-color: #B8860B; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none;
+    padding: 10px 15px;
+    margin: 10px 0; /* Espacio entre los botones */
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover, .register-btn:hover {
+    background-color: #D2691E; /* Color de fondo al pasar el cursor */
+}
+
+/* Asegurarse de que los botones sean visibles en el menú móvil */
+@media (max-width: 768px) {
+    .login-btn, .register-btn {
+        color: white !important; /* Asegura que el texto sea blanco */
+        display: inline-block; /* Asegura que se muestren en línea en el menú */
+    }
+}
+
+
     </style>
 
 
@@ -392,6 +554,9 @@
 
             <span class="brand-name">LA FAMILIA</span>
         </div>
+
+         <!-- Botón de menú hamburguesa para móviles -->
+    <button class="hamburger">&#9776;</button>
 
         <div class="navbar-menu">
             <a href="http://localhost/sistema-lafamilia/TABLA-FAMILIA/public/welcome">Inicio</a>
@@ -464,6 +629,23 @@
         <p>&copy; 2024 La Familia. Todos los derechos reservados.</p>
 
     </footer>
+
+
+
+    <script>
+        $(document).ready(function () {
+            // Al hacer clic en el botón de menú, alterna el menú
+            $('.hamburger').on('click', function () {
+                $('.navbar-menu').toggleClass('active');
+            });
+    
+            // Ocultar el menú al hacer clic en cualquier enlace del menú
+            $('.navbar-menu a').on('click', function () {
+                $('.navbar-menu').removeClass('active');
+            });
+        });
+    </script>
+    
 
     <script>
         $(document).ready(function() {

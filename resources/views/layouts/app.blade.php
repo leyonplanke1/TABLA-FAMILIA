@@ -183,6 +183,84 @@
 }
 
 
+            /* Estilos generales para que el menú lateral sea más estrecho en pantallas grandes */
+.side-menu {
+    width: 230px; /* Ancho ajustado para pantallas grandes */
+    background-color: #D2691E;
+    transition: all 0.3s;
+}
+
+.page-content {
+    margin-left: 10px; /* Alineación del contenido principal con el menú lateral */
+    padding: 40px;
+    flex-grow: 1;
+}
+
+/* Media Queries para tablets */
+@media (max-width: 1024px) {
+    .side-menu {
+        width: 160px;
+    }
+    .page-content {
+        margin-left: 160px;
+    }
+}
+
+/* Media Queries para móviles */
+@media (max-width: 768px) {
+    .side-menu {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: -100%; /* Ocultar fuera de la vista por defecto */
+        transition: left 0.3s ease-in-out;
+    }
+
+    /* Mostrar el menú lateral cuando esté en modo "open" */
+    .side-menu.open {
+        left: 0;
+    }
+
+    /* Hacer que el contenido principal ocupe el ancho completo */
+    .page-content {
+        margin-left: 0;
+    }
+
+    /* Botón para abrir/cerrar el menú en móviles */
+    .hamburger {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    /* Ajustes del header en móviles */
+    .site-header {
+        padding: 10px;
+        justify-content: space-between;
+    }
+}
+
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+    }
+    .btn-add-cart {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+
+
+
+
         </style>
         @laravelPWA
 
@@ -477,6 +555,23 @@
     {{-- sweet alert --}}
     <script src="{{asset('sweet/js/sweetalert2.js')}}"></script>
     <script src="{{asset('sweet/js/sweet.js')}}"></script>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButton = document.querySelector(".hamburger");
+            const sideMenu = document.querySelector(".side-menu");
+    
+            toggleButton.addEventListener("click", () => {
+                sideMenu.classList.toggle("open");
+            });
+        });
+    </script>
+    
+
+
+
 
 
     <script>

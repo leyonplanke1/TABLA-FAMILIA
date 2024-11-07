@@ -97,8 +97,9 @@ Route::middleware(['auth', 'role:cliente'])->group(function () {
     
 
 // Define las rutas para los procesos de éxito y cancelación de pagos
-Route::post('/payment-success', [PagoController::class, 'success'])->name('payment.success');
-Route::post('/payment-cancel', [PagoController::class, 'cancel'])->name('payment.cancel');
+//Route::post('/payment-success', [PagoController::class, 'success'])->name('payment.success');
+//Route::post('/payment-cancel', [PagoController::class, 'cancel'])->name('payment.cancel');
+
 
 
 

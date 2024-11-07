@@ -42,7 +42,7 @@
                 <td>{{ $producto->categoria->nombre }}</td>
                 <!-- Celda de la foto del producto -->
                 <td>
-                    <img src="{{ asset('images/' . $producto->foto) }}" alt="{{ $producto->nombre }}" width="50" height="50">
+                    <img src="{{ asset('images/' . $producto->foto) }}" alt="{{ $producto->nombre }}" width="100" height="100">
                 </td>
                 
                 
