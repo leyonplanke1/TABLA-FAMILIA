@@ -67,6 +67,16 @@
                 </div>
             </div>
 
+            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
            <!-- Modal Editar Categoría -->
 <div class="modal fade" id="editarCategoriaModal{{ $categoria->id_categoria }}" tabindex="-1" aria-labelledby="editarCategoriaModalLabel" aria-hidden="true">
     <div class="modal-dialog">

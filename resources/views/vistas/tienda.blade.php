@@ -152,7 +152,7 @@
     width: 100%; /* Esto hará que la imagen ocupe el ancho completo del contenedor */
     height: 250px; /* Ajusta la altura según prefieras */
     object-fit: cover; /* Para que la imagen se ajuste bien sin distorsionarse */
-    border-radius: 30px; /* Opcional: redondea las esquinas */
+    border-radius: 10px; /* Opcional: redondea las esquinas */
 }
 
     
@@ -160,8 +160,38 @@
     width: 100%; /* Ancho total del contenedor */
     height: 250px; /* Altura de la imagen */
     object-fit: cover; /* Ajuste para que no se distorsione */
-    border-radius: 10px; /* Bordes redondeados opcionales */
+    border-radius: 20px; /* Bordes redondeados opcionales */
 }
+
+.product-grid .card {
+    width: 250px; /* Ajusta el ancho de cada card */
+    margin: 10px; /* Espaciado entre cards */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera para el efecto */
+}
+
+
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: absolute; /* Posicionado relativo a la imagen */
+    width: auto; /* Ajustado automáticamente al contenido */
+    max-width: 250px; /* Ancho máximo */
+    max-height: 230px; /* Altura máxima para que no se extienda demasiado */
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo translúcido */
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-size: 14px; /* Tamaño de texto */
+    border: 1px solid #ddd; /* Borde alrededor */
+    overflow-y: auto; /* Habilita el scroll vertical */
+}
+
+    
+
 
 
 
@@ -172,8 +202,8 @@
     
         <div class="product-grid">
             @foreach ($productos as $producto)
-            <div class="card">
-                <img src="{{ asset('images/' . $producto->foto) }}" alt="{{ $producto->nombre }}"  class="product-img">
+            <div class="card" data-description="{{ $producto->descripcion }}">
+                <img src="{{ asset('images/' . $producto->foto) }}" alt="{{ $producto->nombre }}" class="product-img">
                 <div class="card-body">
                     <h3 class="product-title">{{ $producto->nombre }}</h3>
                     <p class="product-price">S/. {{ number_format($producto->precio, 2) }}</p>
@@ -192,6 +222,13 @@
             @endforeach
         </div>
     </div>
+    
+
+<!-- Modal General -->
+<!-- Modal General solo para la descripción -->
+<div class="modal" id="productModal">
+    <p id="modalDescription"></p>
+</div>
 
 
 
@@ -201,6 +238,46 @@
 </html>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+document.querySelectorAll('.product-img').forEach(img => {
+    img.addEventListener('mouseenter', function() {
+        const modal = document.getElementById('productModal');
+
+        // Obtiene la descripción del producto
+        const description = this.closest('.card').getAttribute('data-description');
+
+        // Actualiza el contenido del modal con solo la descripción
+        document.getElementById('modalDescription').textContent = description;
+
+        // Posiciona el modal cerca de la imagen
+        const rect = this.getBoundingClientRect();
+        modal.style.top = `${rect.top + window.scrollY + this.offsetHeight}px`;
+        modal.style.left = `${rect.left + window.scrollX}px`;
+
+        // Muestra el modal
+        modal.style.display = 'block';
+    });
+
+    img.addEventListener('mouseleave', function() {
+        // Oculta el modal cuando el cursor sale de la imagen
+        document.getElementById('productModal').style.display = 'none';
+    });
+});
+
+document.getElementById('productModal').addEventListener('mouseleave', function() {
+    // Oculta el modal cuando el cursor sale del modal
+    this.style.display = 'none';
+});
+
+
+</script>
+
+
+
+
 
 <script>
     $(document).ready(function () {

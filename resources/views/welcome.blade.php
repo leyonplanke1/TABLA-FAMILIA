@@ -380,9 +380,9 @@
 
     <div class="carousel">
         <div class="carousel-images">
-            <img src="https://files.oaiusercontent.com/file-9mS7A1qt3vkCATxvFOBVIKn2?se=2024-11-02T03%3A10%3A44Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D030903bd-e838-4590-ba66-ccc81d159f74.webp&sig=3n1jaiGSiLaM5I3baxfiInHTLE5MKufvlTIfSbZHyWw%3D" alt="Proyecto 1" width="50px" height="90px">
-            <img src="https://files.oaiusercontent.com/file-VXMOxtpuz7sJshH3fqH8T7W3?se=2024-11-02T03%3A13%3A42Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Ddb6096df-9914-4dcd-ba57-a92b6e879eb1.webp&sig=sk8M8jrzSOHGtAIx5j/T6zEfd/WQJF8itVm2uUOkx80%3D" alt="Proyecto 2">
-            <img src="https://files.oaiusercontent.com/file-fSpYi4BqEJMprNWTc7iemgjm?se=2024-11-02T03%3A15%3A38Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dab690c16-e017-4a7a-8637-3b482e5dcf51.webp&sig=1HIY5I/M2R6I7s34529edrIrMQ%2BpdrUGx1WzMI6UKTU%3D" alt="Proyecto 3" width="50px" height="90px">
+            <img src="https://files.oaiusercontent.com/file-FKLL1AwE7sgmJ9Cb3k2gWdLw?se=2024-11-08T03%3A54%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da2283fda-2024-441b-a7a9-7018de387261.webp&sig=9QnYxpDG/P4NlvNr7LstEurUfkdoWr6CmovXDlX91/Q%3D" alt="Proyecto 1" width="50px" height="90px">
+            <img src="https://files.oaiusercontent.com/file-zaJFUy6DUF5TM8csEO4XLg71?se=2024-11-08T03%3A55%3A28Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dc3671bb0-01e9-4c5b-83ce-e7d31cde701e.webp&sig=8T3INCshFufb64xrWGi6/ClH/20GBu5DoOZOdpPDtrU%3D" alt="Proyecto 2">
+            <img src="https://files.oaiusercontent.com/file-OAwquIzPExD7zaPcET9zvSvG?se=2024-11-08T03%3A55%3A39Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D5cd9b0ee-a342-4103-8611-3d7c2bb4db16.webp&sig=0zt%2BVGwXzzVfqNkgESvN6qNCNc3Q6SpA6ZFnrBaUhm8%3D" alt="Proyecto 3" width="50px" height="90px">
         </div>
         <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
         <button class="next" onclick="moveSlide(1)">&#10095;</button>
@@ -426,7 +426,7 @@
 
     <div class="extintores-section">
         <div class="extintores-content">
-            <img src="https://files.oaiusercontent.com/file-VZoV1fxEmAXsdjr0SzoUY1uK?se=2024-10-25T01%3A31%3A43Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da018e1c8-b5d6-49ed-be51-eeae5de19e42.webp&sig=mJQY1ptUT9AzMwQWr%2BJfaZHVzaOeAQRhuwyHm8/Eo1k%3D" alt="Extintores" class="extintores-img">
+            <img src="https://files.oaiusercontent.com/file-zaJFUy6DUF5TM8csEO4XLg71?se=2024-11-08T03%3A55%3A28Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dc3671bb0-01e9-4c5b-83ce-e7d31cde701e.webp&sig=8T3INCshFufb64xrWGi6/ClH/20GBu5DoOZOdpPDtrU%3D" alt="Extintores" class="extintores-img">
             <div class="extintores-info">
                 <h2>Calidad en merceria</h2>
                 <h1>Siempre La mejor Calidad</h1>

@@ -33,7 +33,7 @@ class CategoriasController extends Controller
         $request->validate([
             'nombre' => 'required|max:100',
             
-            'descripcion' => 'required|max:100',
+            'descripcion' => 'required|max:250',
         ]);
 
         // Crear la categoría

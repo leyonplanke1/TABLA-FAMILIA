@@ -175,6 +175,7 @@
             overflow-y: auto;
         }
 
+        
             
         .spinner-border {
     margin-left: 10px;
@@ -215,6 +216,7 @@
         top: 0;
         left: -100%; /* Ocultar fuera de la vista por defecto */
         transition: left 0.3s ease-in-out;
+        
     }
 
     /* Mostrar el menú lateral cuando esté en modo "open" */
@@ -454,51 +456,7 @@
 
 
 
-                <li class="grey with-sub {{ Request::is('cita*') ? 'opened' : ''}}">
-                    <span>
-                        <img src="{{asset('img-inicio/proveedores.png')}}" class="img-inicio" alt="">
-                        {{-- <i class="fas fa-sort-amount-up-alt"></i> --}}
-                        <span class="lbl">PROVEEDORES</span>
-                    </span>
-                    <ul>
-                        <li>
-                            <a href="" class="{{ Request::is('cita-create*') ? 'activo' : ''}}">
-                                <i class="fas fa-plus-square icono-submenu"></i>
-                                <span class="lbl">Proveedores</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="{{ Request::is('cita-index*') ? 'activo' : ''}}">
-                                <i class="fas fa-th-list icono-submenu"></i>
-                                <span class="lbl">Ingresos</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                
-                <li class="grey with-sub {{ Request::is('cita*') ? 'opened' : ''}}">
-                    <span>
-                        <img src="{{asset('img-inicio/reportes.png')}}" class="img-inicio" alt="">
-                        {{-- <i class="fas fa-sort-amount-up-alt"></i> --}}
-                        <span class="lbl">REPORTES</span>
-                    </span>
-                    <ul>
-                        <li>
-                            <a href="" class="{{ Request::is('cita-create*') ? 'activo' : ''}}">
-                                <i class="fas fa-plus-square icono-submenu"></i>
-                                <span class="lbl">Reporte Ventas</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="{{ Request::is('cita-index*') ? 'activo' : ''}}">
-                                <i class="fas fa-th-list icono-submenu"></i>
-                                <span class="lbl">Reporte Inventario</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
+               
 
                 <li class="red">
                     <a href="{{route('empresa.index')}}" class="{{ Request::is('empresa*') ? 'activo' : ''}}">

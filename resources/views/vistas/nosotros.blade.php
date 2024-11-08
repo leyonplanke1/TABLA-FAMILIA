@@ -268,7 +268,7 @@
                 <p><strong>Equipo La Familia</strong><br>Gerencia</p>
             </div>
             <div class="nosotros-imagen">
-                <img src="images/equipo.jpg" alt="Equipo La Familia">
+                <img src="https://files.oaiusercontent.com/file-FKLL1AwE7sgmJ9Cb3k2gWdLw?se=2024-11-08T03%3A54%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da2283fda-2024-441b-a7a9-7018de387261.webp&sig=9QnYxpDG/P4NlvNr7LstEurUfkdoWr6CmovXDlX91/Q%3D" alt="Equipo La Familia" width="500x" height="500x">
             </div>
         </div>
     
