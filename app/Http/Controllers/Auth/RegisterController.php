@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'telefono' => $data['telefono'] ?? null,
             'direccion' => $data['direccion'] ?? null,
             'correo' => $data['correo'],
-            'foto' => $data['foto'] ?? null,
+            
             'estado' => 1, // Activo por defecto
             'tipo_usuario' => 2, // Tipo de usuario (Cliente por defecto)
         ]);

@@ -97,11 +97,7 @@
                     <input id="apellido" type="text" name="apellido" class="form-control" placeholder="Ingresa tu apellido" required>
                 </div>
 
-                <div class="mb-4">
-                    <label for="usuario" class="form-label">Usuario</label>
-                    <input id="usuario" type="text" name="usuario" class="form-control" placeholder="Elige un nombre de usuario" required>
-                </div>
-
+                
                 <div class="mb-4">
                     <label for="dni" class="form-label">DNI</label>
                     <input id="dni" type="text" name="dni" class="form-control" placeholder="Ingresa tu DNI" required>
@@ -111,6 +107,13 @@
                     <label for="correo" class="form-label">Correo Electrónico</label>
                     <input id="correo" type="email" name="correo" class="form-control" placeholder="Ingresa tu correo electrónico" required>
                 </div>
+
+
+                <div class="mb-4">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input id="usuario" type="text" name="usuario" class="form-control" placeholder="Elige un nombre de usuario" required>
+                </div>
+
 
                 <div class="mb-4">
                     <label for="password" class="form-label">Contraseña</label>
