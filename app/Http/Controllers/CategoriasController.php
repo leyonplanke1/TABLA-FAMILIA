@@ -55,7 +55,7 @@ class CategoriasController extends Controller
         // Validar los datos
         $request->validate([
             'nombre' => 'required|max:100',
-            'descripcion' => 'nullable|max:255',
+            'descripcion' => 'nullable|max:250',
         ]);
 
         // Encontrar y actualizar la categoría

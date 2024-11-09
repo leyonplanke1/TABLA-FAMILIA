@@ -50,7 +50,7 @@ class ProductosController extends Controller
             'nombre' => 'required|max:50',
             'precio' => 'required|numeric',
             'stock' => 'required|integer',
-            'descripcion' => 'nullable|max:255',
+            'descripcion' => 'nullable|max:800',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // Validación de imagen
             'estado' => 'required|boolean',
             'id_categoria' => 'required|exists:categoria,id_categoria',
