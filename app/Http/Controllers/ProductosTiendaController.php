@@ -103,24 +103,31 @@ class ProductosTiendaController extends Controller
     $metodoEnvio = $request->input('metodo_envio');
     $metodoPago = $request->input('metodo_pago');
     $costoEnvio = $metodoEnvio === 'express' ? 10.00 : 5.00;
-    $costoEnvioConIgv = $costoEnvio ;
-    $totalFinal = $subtotal + $costoEnvioConIgv;
+   
+    $totalFinal = $subtotal + $costoEnvio;
 
     // Ajuste del costo de envío según el método seleccionado
     $costoEnvio = $metodoEnvio === 'express' ? 10.00 : 5.00;
-    $costoEnvioConIgv = $costoEnvio ; // Aplica IGV al costo de envío
-    $totalFinal = $subtotal + $costoEnvioConIgv;
+    
+    $totalFinal = $subtotal + $costoEnvio;
+
+
+    // Calcular el adelanto y el monto restante
+
+
 
 
     // Crear registro de la venta
     $venta = new Venta();
     $venta->id_usuario = $usuario->id_usuario; // Guardar el ID del usuario autenticado
-    
-    
     $venta->total = $totalFinal; // Guarda el total
     $venta->pagoTotal = $totalFinal;  // Guarda el total
     $venta->fecha = now(); // Guarda la fecha actual
     $venta->save(); // Guarda la venta en la base de datos
+
+
+
+
 
         // Guardar detalles de la venta en venta_detalle
         
@@ -135,9 +142,20 @@ class ProductosTiendaController extends Controller
     $detalle->save(); // Guarda el detalle
 }*/
         
+      // Determinar el título del documento según el método de pago
+    if ($metodoPago === 'paypal') {
+        $tituloDocumento = 'Recibo de Compra';
+    } elseif ($metodoPago === 'contraentrega') {
+        $tituloDocumento = 'Nota de Compra';
+    } else {
+        $tituloDocumento = 'Recibo  de Compra';
+    }
+
+
+
 
     // Generar el PDF con el detalle del carrito
-    $pdf = Pdf::loadView('vistas.recibo', compact('cart', 'subtotal', 'totalFinal', 'usuario', 'direccion', 'metodoEnvio', 'metodoPago', 'costoEnvioConIgv'));
+    $pdf = Pdf::loadView('vistas.recibo', compact('tituloDocumento','cart', 'subtotal', 'totalFinal',  'usuario', 'direccion', 'metodoEnvio', 'metodoPago', 'costoEnvio'));
 
     // Guardar el PDF
     $pdfPath = 'recibos/recibo_' . time() . '.pdf';
@@ -157,6 +175,7 @@ class ProductosTiendaController extends Controller
     return view('vistas.checkout', [
         'pdfUrl' => asset($pdfPath),
         'metodoPago' => $metodoPago
+       
     ]);
 }
 

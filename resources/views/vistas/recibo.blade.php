@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Recibo de Compra</title>
+    <title>{{ $tituloDocumento }}</title>
     <style>
         /* Estilos avanzados */
         body {
@@ -67,12 +67,17 @@
         .total .label {
             padding-right: 10px;
         }
+        .total-separator {
+            border-top: 2px solid #333;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="{{ public_path('path/to/logo.png') }}" alt="Logo La Familia">
-        <h1>Recibo de Compra</h1>
+        <h1>{{ $tituloDocumento }}</h1>
     </div>
 
     <div class="info-cliente">
@@ -80,8 +85,7 @@
         <p><strong>Nombre:</strong> {{ $usuario->nombre }}</p>
         <p><strong>Dirección de Envío:</strong> {{ $direccion }}</p>
         <p><strong>Método de Envío:</strong> {{ $metodoEnvio }}</p>
-        <p><strong>Costo de Envío :</strong> S/. {{ number_format($costoEnvioConIgv, 2) }}</p>
-
+        <p><strong>Costo de Envío :</strong> S/. {{ number_format($costoEnvio, 2) }}</p>
         <p><strong>Método de Pago:</strong> {{ $metodoPago }}</p>
     </div>
 
@@ -90,7 +94,7 @@
             <tr>
                 <th>Producto</th>
                 <th>Cantidad</th>
-                <th>Precio Unitario </th>
+                <th>Precio Unitario</th>
                 <th>Subtotal</th>
             </tr>
         </thead>
@@ -107,9 +111,12 @@
     </table>
 
     <div class="total">
-        <p>Subtotal : S/. {{ number_format($subtotal, 2) }}</p>
-        <p>Costo de Envío (con IGV): S/. {{ number_format($costoEnvioConIgv, 2) }}</p>
-        <p>Total a Pagar : S/. {{ number_format($totalFinal, 2) }}</p>
+        <p>Subtotal: S/. {{ number_format($subtotal, 2) }}</p>
+        <p>Costo de Envío: S/. {{ number_format($costoEnvio, 2) }}</p>
+        <div class="total-separator">
+            
+            <p>Total a pagar: S/. {{ number_format($subtotal+$costoEnvio, 2) }}</p>
+        </div>
     </div>
 </body>
 </html>

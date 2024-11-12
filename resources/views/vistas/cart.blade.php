@@ -171,7 +171,7 @@
             @csrf
             <div class="form-section">
                 <h2>Información de Envío</h2>
-                <label for="direccion">Dirección de Envío:</label>
+                <label for="direccion">Dirección de Envío(Solo Concepción y Alrededores):</label>
                 <input type="text" id="direccion" name="direccion" required placeholder="Ingrese la dirección de entrega">
 
                 <label for="metodo_envio">Método de Envío:</label>
@@ -237,7 +237,7 @@
 <div id="paypal-button-container" style="display:none;"></div>  <!-- Inicialmente oculto -->
 
 <!-- Botón de Pago Contraentrega -->
-<button type="submit" class="pay-button" style="display:none;">Pagar</button> <!-- Inicialmente oculto -->
+<button type="submit" class="pay-button" style="display:none;">Realizar compra</button> <!-- Inicialmente oculto -->
 
 
                 
@@ -268,6 +268,9 @@ paypal.Buttons({
         return actions.order.capture().then(function(details) {
             console.log('Pago realizado con éxito', details);
             // Aquí podrías redirigir al usuario a una página de éxito o actualizar tu base de datos.
+
+            // Redirigir a la ruta de checkout en el servidor para generar el PDF
+        window.location.href = "{{ route('cart.checkout') }}";
         });
     },
     onError: function(err) {

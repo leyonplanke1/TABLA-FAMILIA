@@ -24,37 +24,47 @@ class UsuariosController extends Controller
     // Guardar un nuevo usuario en la base de datos
     public function store(Request $request)
     {
+        // Verificar si el registro es de un cliente o un administrador
+        $isClient = $request->has('is_client'); // Usa el campo oculto para diferenciar
+    
         // Validar los campos recibidos
-        $request->validate([
-            'usuario' => 'required|unique:usuario|max:100', // Validación de usuario único
-            'tipo_usuario' => 'required|in:1,2',  // Solo valores 1 (Admin) o 2 (Cliente)
+        $rules = [
+            'usuario' => 'required|unique:usuario|max:100',
             'nombre' => 'required|max:100',
             'apellido' => 'required|max:100',
-            'dni' => 'required|numeric|digits:8|unique:usuario,dni', // Nuevo campo DNI con validación
+            'dni' => 'required|numeric|digits:8|unique:usuario,dni',
             'password' => 'required|min:5|max:255',
             'telefono' => 'nullable|max:20',
             'direccion' => 'nullable|max:255',
             'correo' => 'required|email|max:255',
-            'estado' => 'required|boolean',
-        ]);
-
+        ];
+    
+        // Añadir validación adicional si es un administrador
+        if (!$isClient) {
+            $rules['tipo_usuario'] = 'required|in:1,2'; // Solo valores 1 (Admin) o 2 (Cliente)
+            $rules['estado'] = 'required|boolean';
+        }
+    
+        $request->validate($rules);
+    
         // Crear el usuario con los datos recibidos
         Usuario::create([
             'usuario' => $request->usuario,
-            'tipo_usuario' => $request->tipo_usuario,
+            'tipo_usuario' => $isClient ? 2 : $request->tipo_usuario, // Si es cliente, establece tipo 2
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
-            'dni' => $request->dni, // Guardar DNI
+            'dni' => $request->dni,
             'password' => bcrypt($request->password),
             'telefono' => $request->telefono,
             'direccion' => $request->direccion,
             'correo' => $request->correo,
-            'estado' => $request->estado,
+            'estado' => $isClient ? 1 : $request->estado, // Si es cliente, establece estado como activo (1)
         ]);
-
-        // Redirigir al index con mensaje de éxito
+    
+        // Redirigir con mensaje de éxito
         return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente.');
     }
+    
 
     // Mostrar un usuario específico
     public function show($id_usuario)

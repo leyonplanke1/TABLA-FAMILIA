@@ -90,6 +90,7 @@ Route::middleware(['auth', 'role:cliente'])->group(function () {
     Route::get('/clear-cart', [ProductosTiendaController::class, 'clearCart'])->name('cart.clear');
     Route::post('/cart/checkout', [ProductosTiendaController::class, 'checkout'])->name('cart.checkout');
     Route::post('/cart/update/{id_producto}', [ProductosTiendaController::class, 'updateCartQuantity'])->name('cart.updateQuantity');
+    Route::match(['get', 'post'], '/cart/checkout', [ProductosTiendaController::class, 'checkout'])->name('cart.checkout');
 
     
 
