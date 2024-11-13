@@ -128,6 +128,17 @@
                 transform: translateY(0);
             }
         }
+
+        .imagen-redondeada {
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    border: 3px solid #fff; /* Opcional: añade un borde blanco alrededor */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra para darle profundidad */
+    width: 300px; /* Ajusta el tamaño de la imagen */
+    height: 395px; /* Ajusta el tamaño de la imagen */
+    object-fit: contain; /* Asegura que toda la imagen entre en el círculo */
+}
+
+
     </style>
 </head>
 
@@ -135,7 +146,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 d-none d-lg-block login-img">
-                <img src="{{ asset('inicio/img/familia4.png') }}" alt="Logo">
+                <img src="{{ asset('inicio/img/familia4.png') }}" alt="Logo Bazar La Familia" class="imagen-redondeada">
             </div>
 
             <div class="col-lg-6">

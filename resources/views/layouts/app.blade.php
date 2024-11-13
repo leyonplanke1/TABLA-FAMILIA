@@ -258,8 +258,46 @@
 
 
 
+/* Cambiar el color de fondo del menú lateral y sus elementos al abrir *//* Estilo general para la tabla */
+/* Cambiar el color de fondo del menú lateral y sus elementos al abrir */
+.side-menu {
+    background-color: #D2691E; /* Gris oscuro cálido */
+    color: #FFFFFF;
+}
 
+.side-menu ul.side-menu-list li {
+    background-color: transparent;
+    color: #FFFFFF;
+}
 
+.side-menu ul.side-menu-list li a {
+    color: #FFFFFF;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.side-menu ul.side-menu-list li:hover {
+    background-color: hsl(196, 82%, 49%); /* Gris más oscuro para efecto hover */
+}
+
+.side-menu ul.side-menu-list li a:hover {
+    color: #FFA726; /* Naranja cálido para resaltar el enlace */
+}
+
+/* Agregar sombra a la barra lateral */
+.side-menu {
+    box-shadow: 2px 0px 10px rgba(44, 107, 233, 0.2);
+}
+
+.icono-submenu {
+    font-size: 1.2rem;
+    margin-right: 8px;
+    vertical-align: middle; /* Alineación vertical */
+}
+
+.lbl {
+    vertical-align: middle; /* Asegura que el texto esté alineado con el icono */
+    font-weight: 500;
+}
 
 
 
@@ -383,14 +421,15 @@
                         <!-- Submenú para listar clientes -->
                         <li>
                             <a href="{{ route('usuarios.index') }}" class="{{ Request::is('usuarios.index') ? 'activo' : ''}}">
-                                <i class="fas fa-list icono-submenu"></i>
-                                <span class="lbl">Listar Usuarios</span>
+                                <i class="fas fa-table icono-submenu"></i> <!-- Ícono centrado -->
+                                <span class="lbl">Usuarios</span>
                             </a>
                         </li>
                         <!-- Submenú para agregar un cliente -->
                         <li>
                             <a href="{{ route('clientes.create') }}" class="{{ Request::is('clientes.create') ? 'activo' : ''}}">
-                                <i class="fas fa-plus icono-submenu"></i>
+                                <i class="fas fa-user-plus icono-submenu"></i> <!-- Ícono centrado -->
+
                                 <span class="lbl">Nuevo Usuario</span>
                             </a>
                         </li>
@@ -410,14 +449,14 @@
                         <!-- Submenú para listar clientes -->
                         <li>
                             <a href="{{ route('productos.index') }}" class="{{ Request::is('clientes.index') ? 'activo' : ''}}">
-                                <i class="fas fa-list icono-submenu"></i>
+                                <i class="fas fa-box icono-submenu"></i>
                                 <span class="lbl">Productos</span>
                             </a>
                         </li>
                         <!-- Submenú para agregar un cliente -->
                         <li>
                             <a href="{{ route('categorias.index') }}" class="{{ Request::is('categorias.index') ? 'activo' : ''}}">
-                                <i class="fas fa-plus icono-submenu"></i>
+                                <i class="fas fa-tags icono-submenu"></i>
                                 <span class="lbl">Categorias</span>
                             </a>
                         </li>
@@ -440,14 +479,14 @@
                         <!-- Submenú para listar clientes -->
                         <li>
                             <a href="{{ route('ventas.index') }}" class="{{ Request::is('ventas.index') ? 'activo' : ''}}">
-                                <i class="fas fa-list icono-submenu"></i>
+                                <i class="fas fa-table icono-submenu"></i>
                                 <span class="lbl">Ventas</span>
                             </a>
                         </li>
                         <!-- Submenú para agregar un cliente -->
                         <li>
                             <a href="{{ route('ventas.reporte') }}" class="{{ Request::is('ventas.reporte') ? 'activo' : ''}}">
-                                <i class="fas fa-plus icono-submenu"></i>
+                                <i class="fas fa-clipboard-list icono-submenu"></i>
                                 <span class="lbl">Historial de Ventas</span>
                             </a>
                         </li>

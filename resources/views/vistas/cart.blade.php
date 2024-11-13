@@ -158,12 +158,12 @@
 </head>
 
 <body>
+    
+
+    <h1 style="text-align: center; margin-top: 20px;">Carrito de Compras</h1>
     <div class="d-flex justify-content-start mt-3">
         <a href="{{ route('tienda.index') }}" class="btn btn-secondary">Regresar</a>
     </div>
-
-    <h1 style="text-align: center; margin-top: 20px;">Carrito de Compras</h1>
-
     <div class="container">
         @if(session('cart'))
          <!-- Formulario para método de envío y pago -->
@@ -177,7 +177,7 @@
                 <label for="metodo_envio">Método de Envío:</label>
                 <select id="metodo_envio" name="metodo_envio" required>
                     <option value="estandar">Envío Estándar - S/. 5.00</option>
-                    <option value="express">Envío Express - S/. 10.00</option>
+                    
                 </select>
             </div>
 
@@ -190,7 +190,7 @@
                 </label>
                 <label>
                     <input type="radio" name="metodo_pago" value="contraentrega">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Cash_icon.svg" alt="Contraentrega" width="30">
+                    <img src="https://files.oaiusercontent.com/file-uVcJQdIgpwFRbK4iP846tQiw?se=2024-11-13T03%3A33%3A32Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D44db6d96-e56e-4639-8f5a-0dce536d56e9.webp&sig=05ihzZIeVNvviy8w7uchpYVYmYrCXhYZHMw2FynP8Xo%3D" alt="Contraentrega" width="30">
                     Contraentrega
                 </label>
             </div>
@@ -241,7 +241,7 @@
 
 
                 
-                
+
            
             
          </form>

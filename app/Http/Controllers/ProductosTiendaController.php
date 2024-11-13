@@ -99,10 +99,11 @@ class ProductosTiendaController extends Controller
 
     // Datos del usuario y otros detalles
     $usuario = Auth::user();
-    $direccion = $request->input('direccion');
-    $metodoEnvio = $request->input('metodo_envio');
-    $metodoPago = $request->input('metodo_pago');
+    $direccion = $request->input('direccion', 'Jr.dario peña 456, Lima, Peru');
+    $metodoEnvio = $request->input('metodo_envio', 'Estandar');
+    $metodoPago = $request->input('metodo_pago', 'Paypal');
     $costoEnvio = $metodoEnvio === 'express' ? 10.00 : 5.00;
+
    
     $totalFinal = $subtotal + $costoEnvio;
 
@@ -145,17 +146,20 @@ class ProductosTiendaController extends Controller
       // Determinar el título del documento según el método de pago
     if ($metodoPago === 'paypal') {
         $tituloDocumento = 'Recibo de Compra';
+        
     } elseif ($metodoPago === 'contraentrega') {
         $tituloDocumento = 'Nota de Compra';
     } else {
         $tituloDocumento = 'Recibo  de Compra';
+        
     }
 
 
 
 
     // Generar el PDF con el detalle del carrito
-    $pdf = Pdf::loadView('vistas.recibo', compact('tituloDocumento','cart', 'subtotal', 'totalFinal',  'usuario', 'direccion', 'metodoEnvio', 'metodoPago', 'costoEnvio'));
+    $pdf = Pdf::loadView('vistas.recibo', compact('tituloDocumento','cart', 
+    'subtotal', 'totalFinal',  'usuario', 'direccion', 'metodoEnvio', 'metodoPago', 'costoEnvio'));
 
     // Guardar el PDF
     $pdfPath = 'recibos/recibo_' . time() . '.pdf';

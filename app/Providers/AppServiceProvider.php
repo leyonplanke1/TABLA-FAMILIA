@@ -40,7 +40,8 @@ class AppServiceProvider extends ServiceProvider
         $total_cliente=DB::select("select count(*) as total from cliente  ");
         View::share("total_cliente", $total_cliente[0]->total);
 
-        $total_venta=DB::select("select COUNT(*) AS total FROM venta WHERE estado = 1 AND DATE(fecha) = CURDATE()");
+        $total_venta=DB::select("select COUNT(*) AS total FROM venta WHERE estado = 0 AND DATE(fecha) = CURDATE();
+");
         View::share("total_venta", $total_venta[0]->total);
 
         $total_producto=DB::select("select count(*) as total from producto where estado=1 ");
@@ -56,7 +57,7 @@ class AppServiceProvider extends ServiceProvider
         FROM
         venta
         where
-        EXTRACT(YEAR FROM fecha) =  EXTRACT(YEAR FROM NOW()) and venta.estado=1
+        EXTRACT(YEAR FROM fecha) =  EXTRACT(YEAR FROM NOW()) and venta.estado=0
         GROUP BY  MONTHNAME(venta.fecha)
         ORDER BY Month(fecha)ASC       
           ");
