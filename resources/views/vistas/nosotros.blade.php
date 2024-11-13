@@ -49,7 +49,7 @@ body {
 /* Header */
 header {
     background-color: #D2691E;
-    padding: 15px 30px;
+    padding: 5px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,9 +61,7 @@ header {
     transition: background-color 0.3s ease;
 }
 
-header:hover {
-    background-color: #FF5733;
-}
+
 
 .logo img {
     height: 50px;

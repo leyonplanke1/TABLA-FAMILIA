@@ -384,7 +384,7 @@
         <div class="carousel-images">
             <img src="https://i.pinimg.com/736x/ee/6f/f0/ee6ff005c0eadf0df1b59acef72e1725.jpg" alt="Proyecto 1" width="20px" height="20px">
             <img src="https://i.pinimg.com/736x/d4/ed/1c/d4ed1cf04c0fd3daf25153fc533e535b.jpg" alt="Proyecto 2">
-            <img src="https://files.oaiusercontent.com/file-xkQW0PmJHC0IFf0gZmcRjUhX?se=2024-11-13T17%3A28%3A16Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Df2acf64f-69c4-4108-835d-b99046f340c0.webp&sig=cEzT%2BW/9IKPnFrxw0407geYFmhIzTJJVdIbnFa6qpck%3D" alt="Proyecto 3" width="50px" height="90px">
+            <img src="https://i.pinimg.com/736x/af/df/e0/afdfe04eac30b3f4083d5299c317f3a3.jpg" alt="Proyecto 3" width="50px" height="90px">
         </div>
         <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
         <button class="next" onclick="moveSlide(1)">&#10095;</button>
