@@ -15,35 +15,29 @@
                 <label for="dni" class="form-label">DNI</label>
                 <div class="input-group">
                     <input type="text" id="dni" class="form-control" name="dni" required>
-                    <div id="spinner" class="spinner-border text-primary" role="status" style="display: none;">
-                        <span class="sr-only">Cargando...</span>
-                    </div>
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-outline-secondary" id="btnBuscarDNI">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
+                    
+                    
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" id="nombre" class="form-control" name="nombre" required disabled>
+                <input type="text" id="nombre" class="form-control" name="nombre" required>
             </div>
 
             <div class="mb-3">
                 <label for="apellido" class="form-label">Apellidos</label>
-                <input type="text" id="apellido" class="form-control" name="apellido" required disabled>
+                <input type="text" id="apellido" class="form-control" name="apellido" required>
             </div>
 
             <div class="mb-3">
                 <label for="usuario" class="form-label">Usuario</label>
-                <input type="text" id="usuario" class="form-control" name="usuario" required disabled>
+                <input type="text" id="usuario" class="form-control" name="usuario" required >
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" id="password" class="form-control" name="password" required disabled>
+                <input type="password" id="password" class="form-control" name="password" required >
             </div>
 
             <div class="mb-3">
@@ -54,25 +48,25 @@
 
             <div class="mb-3">
                 <label for="telefono" class="form-label">Teléfono</label>
-                <input type="text" id="telefono" class="form-control" name="telefono" disabled>
+                <input type="text" id="telefono" class="form-control" name="telefono" >
             </div>
 
             <div class="mb-3">
                 <label for="correo" class="form-label">Correo</label>
-                <input type="email" id="correo" class="form-control" name="correo" disabled>
+                <input type="email" id="correo" class="form-control" name="correo" >
             </div>
 
             
 
             <div class="mb-3">
                 <label for="tipo_usuario" class="form-label">Tipo de Usuario</label>
-                <select id="tipo_usuario" name="tipo_usuario" class="form-control" required disabled>
+                <select id="tipo_usuario" name="tipo_usuario" class="form-control" required >
                    
                     <option value="2">Cliente</option>
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100" disabled id="submitButton">Registrar Cliente</button>
+            <button type="submit" class="btn btn-primary w-100"  id="submitButton">Registrar Cliente</button>
             <a href="{{ url()->previous() }}" class="btn btn-secondary mt-2">Cancelar</a>
         </form>
     </div>
@@ -92,7 +86,7 @@
 @endif
 
 
-<script>
+<!--<script>
     document.getElementById('btnBuscarDNI').addEventListener('click', function() {
         const dni = document.getElementById('dni').value;
         if (dni) {
@@ -105,12 +99,12 @@
             alert('Por favor, ingresa un DNI válido.');
         }
     });
-</script>
+</script>-->
 @endsection
 
 
 
-<script>
+<!--<script>
     document.addEventListener("DOMContentLoaded", function () {
     let boton = document.getElementById("btnBuscarDNI");
     let spinner = document.getElementById("spinner");
@@ -162,4 +156,4 @@
     }
 });
 
-</script>
+</script>-->

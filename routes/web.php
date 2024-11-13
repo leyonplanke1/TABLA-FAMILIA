@@ -30,6 +30,11 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+
+
+
+
 Route::get('/buscar', [ProductosController::class, 'buscar'])->name('buscar');
 
 
@@ -47,6 +52,26 @@ Route::post('/register/admin', [RegisterController::class, 'registerAdmin'])->na
 
 Route::get('/register/cliente', [RegisterController::class, 'showRegistrationForm'])->name('register.cliente');
 Route::post('/register/cliente', [RegisterController::class, 'register'])->name('register.cliente');
+
+
+
+
+Route::post('/contacto/enviar', [ContactController::class, 'sendContactForm'])->name('contact.send');
+
+// Ruta para el perfil
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware('auth')->name('profile');
+
+// Ruta para cambiar la contraseña
+Route::get('/password/reset', [\App\Http\Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/password/email', [\App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('/password/reset/{token}', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/password/reset', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
+
+
+
+
 
 /* Rutas para Administradores */
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -131,7 +156,7 @@ Route::middleware(['auth', 'role:cliente'])->group(function () {
     
 
 
-    Route::post('/contacto/enviar', [ContactController::class, 'sendContactForm'])->name('contact.send');
+    
 
 
   

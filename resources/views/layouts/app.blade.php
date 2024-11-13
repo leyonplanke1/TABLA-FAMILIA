@@ -360,9 +360,9 @@
                                 <div class="dropdown-menu dropdown-menu-right pt-0" aria-labelledby="dd-user-menu">
 
                                     <h5 class="p-2 text-center nomInfo">Nombre y apellido del usuario</h5>
-                                    <a class="dropdown-item" href=""><span
+                                    <a class="dropdown-item" href="profile"><span
                                             class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
-                                    <a class="dropdown-item" href=""><span
+                                    <a class="dropdown-item" href="password.request"><span
                                             class="font-icon glyphicon glyphicon-lock"></span>Cambiar contraseña</a>
 
                                     <div class="dropdown-divider"></div>

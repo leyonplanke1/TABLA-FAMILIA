@@ -69,6 +69,7 @@ class RegisterController extends Controller
 
         auth()->login($user); // Iniciar sesión automáticamente
 
+        
         return redirect($this->redirectTo())->with('success', 'Cliente registrado exitosamente.'); // Redirigir con éxito
     }
 

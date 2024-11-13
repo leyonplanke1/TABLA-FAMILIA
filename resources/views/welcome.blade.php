@@ -220,16 +220,18 @@
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
 }
 
 .carousel-images {
     display: flex;
     transition: transform 0.5s ease;
+    margin-top: 15px; /* Ajusta el valor según lo necesites */
 }
 
 .carousel-images img {
     width: 2000px;  /* Controla el ancho de las imágenes */
-    height: 750px; /* Controla la altura de las imágenes */
+    height: 740px; /* Controla la altura de las imágenes */
     object-fit: cover; /* Asegura que las imágenes mantengan sus proporciones */
     margin: 10px; /* Espacio entre las imágenes */
     border-radius: 20px; /* Esquinas redondeadas */
@@ -375,14 +377,14 @@
 
 
 
-<h1>--</h1>
+
 <section id="carrusel">
 
     <div class="carousel">
         <div class="carousel-images">
-            <img src="https://files.oaiusercontent.com/file-FKLL1AwE7sgmJ9Cb3k2gWdLw?se=2024-11-08T03%3A54%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da2283fda-2024-441b-a7a9-7018de387261.webp&sig=9QnYxpDG/P4NlvNr7LstEurUfkdoWr6CmovXDlX91/Q%3D" alt="Proyecto 1" width="50px" height="90px">
-            <img src="https://files.oaiusercontent.com/file-zaJFUy6DUF5TM8csEO4XLg71?se=2024-11-08T03%3A55%3A28Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dc3671bb0-01e9-4c5b-83ce-e7d31cde701e.webp&sig=8T3INCshFufb64xrWGi6/ClH/20GBu5DoOZOdpPDtrU%3D" alt="Proyecto 2">
-            <img src="https://files.oaiusercontent.com/file-OAwquIzPExD7zaPcET9zvSvG?se=2024-11-08T03%3A55%3A39Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D5cd9b0ee-a342-4103-8611-3d7c2bb4db16.webp&sig=0zt%2BVGwXzzVfqNkgESvN6qNCNc3Q6SpA6ZFnrBaUhm8%3D" alt="Proyecto 3" width="50px" height="90px">
+            <img src="https://i.pinimg.com/736x/ee/6f/f0/ee6ff005c0eadf0df1b59acef72e1725.jpg" alt="Proyecto 1" width="20px" height="20px">
+            <img src="https://i.pinimg.com/736x/d4/ed/1c/d4ed1cf04c0fd3daf25153fc533e535b.jpg" alt="Proyecto 2">
+            <img src="https://files.oaiusercontent.com/file-xkQW0PmJHC0IFf0gZmcRjUhX?se=2024-11-13T17%3A28%3A16Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Df2acf64f-69c4-4108-835d-b99046f340c0.webp&sig=cEzT%2BW/9IKPnFrxw0407geYFmhIzTJJVdIbnFa6qpck%3D" alt="Proyecto 3" width="50px" height="90px">
         </div>
         <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
         <button class="next" onclick="moveSlide(1)">&#10095;</button>
@@ -394,7 +396,7 @@
 
 
 <body class="antialiased">
-    <
+    
 
     
     <div class="product-section">
@@ -426,14 +428,17 @@
 
     <div class="extintores-section">
         <div class="extintores-content">
-            <img src="https://files.oaiusercontent.com/file-zaJFUy6DUF5TM8csEO4XLg71?se=2024-11-08T03%3A55%3A28Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dc3671bb0-01e9-4c5b-83ce-e7d31cde701e.webp&sig=8T3INCshFufb64xrWGi6/ClH/20GBu5DoOZOdpPDtrU%3D" alt="Extintores" class="extintores-img">
+            <img src="https://i.pinimg.com/736x/8e/67/44/8e67441c6bf8948c36845ab0f9b87575.jpg" alt="Extintores" class="extintores-img">
             <div class="extintores-info">
-                <h2>Calidad en merceria</h2>
+                <h2>Calidad en Bolsos y Carteras</h2>
                 <h1>Siempre La mejor Calidad</h1>
                 <p>
                     Compartimos la mejor calidad a traves de nuestro producto y el mejor servicio a disposicion de todo publico.
                 </p>
-                <button class="btn-comprar">COMPRAR AHORA</button>
+               
+
+                <a href="{{ route('tienda.index') }}" class="btn-comprar">COMPRAR AHORA</a>
+
             </div>
         </div>
     </div>
@@ -461,25 +466,7 @@
     </div>
 
 
-<!-- Cuerpo principal -->
-<div class="content">
-<h2 id="nosotros">¿Quiénes Somos?</h2>
-<p>Somos una empresa innovadora dedicada a crear soluciones digitales modernas.</p>
 
-<h2 id="servicios">Nuestros Servicios</h2>
-<div class="card">
-    <h3>Desarrollo Web</h3>
-    <p>Creamos sitios web personalizados con las últimas tecnologías.</p>
-</div>
-<div class="card">
-    <h3>Marketing Digital</h3>
-    <p>Impulsa tu marca con estrategias digitales efectivas.</p>
-</div>
-<div class="card">
-    <h3>Consultoría IT</h3>
-    <p>Te ayudamos a transformar tu negocio con tecnología.</p>
-</div>
-</div>
 
     
 </body>

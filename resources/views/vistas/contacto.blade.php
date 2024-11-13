@@ -69,6 +69,7 @@
             color: #D2691E;
             text-align: center;
             padding: 20px;
+            margin-bottom: -100px;
         }
 
         .hero h1 {
@@ -169,14 +170,14 @@
 
         /* FAQ Section */
         .faq-section {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 100px;  /* Añadido margen inferior para dar más espacio */
+}
         .faq h2 {
             color: #D2691E;
             margin-bottom: 20px;
@@ -202,7 +203,7 @@
             color: white;
             text-align: center;
             padding: 15px;
-            margin-top: 50px;
+            margin-top: 500px;
         }
 
         /* Responsivo */
@@ -213,6 +214,12 @@
             }
         }
     </style>
+
+
+<!-- Agregar Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
 </head>
 
 <body>
@@ -268,9 +275,18 @@
             <p><strong>Dirección:</strong> Jr . 9 de Julio 397 - concepcion</p>
 
             <div class="social-links">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/TU-PERFIL-DE-FACEBOOK" target="_blank" class="social-link">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <!-- Twitter -->
+                <a href="https://wa.me/+51912462325" target="_blank" class="social-link">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/TU-PERFIL-DE-INSTAGRAM" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </div>
     </div>
