@@ -65,6 +65,18 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Empresa
     Route::get('empresa-index', [EmpresaController::class, 'index'])->name('empresa.index')->middleware('verified');
     Route::post('empresa-update-{id}', [EmpresaController::class, 'update'])->name('empresa.update')->middleware('verified');
+
+    Route::post('/ventas/{id}/cambiar-estado', [VentasController::class, 'cambiarEstado'])->name('ventas.cambiarEstado');
+
+    Route::get('/reporte-ventas', [VentasController::class, 'reporte'])->name('ventas.reporte');
+    //Route::get('/reporte-ventas/pdf', [VentasController::class, 'generarPdf'])->name('reporte.pdf');
+    Route::get('/reporte-ventas/pdf', [VentasController::class, 'generarPdf'])->name('ventas.pdf');
+
+
+
+
+
+
 });
 
 /* Rutas Generales */

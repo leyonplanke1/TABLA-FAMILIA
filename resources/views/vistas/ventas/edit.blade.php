@@ -8,6 +8,13 @@
             @csrf
             @method('PUT')
 
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card mb-4">

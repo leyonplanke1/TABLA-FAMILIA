@@ -7,6 +7,7 @@ use App\Models\VentaProducto;
 use App\Models\Usuario;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class VentasController extends Controller
 {
@@ -113,6 +114,68 @@ class VentasController extends Controller
     
         return redirect()->route('ventas.index')->with('success', 'Venta actualizada correctamente.');
     }
+    
+
+    public function reporte(Request $request)
+{
+    $filter = $request->input('filter', 'all');
+
+    if ($filter == 'today') {
+        // Filtrar ventas de hoy
+        $ventas = Venta::with('usuario')->whereDate('fecha', now()->toDateString())->get();
+    } else {
+        // Obtener todas las ventas
+        $ventas = Venta::with('usuario')->get();
+    }
+
+    return view('vistas.ventas.reporte', compact('ventas'));
+}
+
+
+
+public function generarPdf(Request $request)
+{
+    // Obtiene el valor del filtro de la solicitud (por defecto 'all' si no se proporciona)
+    $filter = $request->get('filter', 'all');
+
+    // Filtra las ventas según el valor del filtro seleccionado
+    if ($filter === 'today') {
+        // Si el filtro es 'today', obtiene solo las ventas del día actual
+        $ventas = Venta::whereDate('fecha', now()->toDateString())->with('usuario')->get();
+        
+        // Define el nombre del archivo PDF para ventas del día
+        $nombreArchivo = 'Ventas_del_Dia.pdf';
+    } else {
+        // Si el filtro es 'all', obtiene todas las ventas
+        $ventas = Venta::with('usuario')->get();
+        
+        // Define el nombre del archivo PDF para ventas totales
+        $nombreArchivo = 'Ventas_Totales.pdf';
+    }
+
+    // Genera el PDF con la vista 'reporte_pdf', pasando las ventas como datos
+    $pdf = PDF::loadView('vistas.ventas.reporte_pdf', compact('ventas'));
+
+    // Descarga el archivo PDF con el nombre asignado según el filtro
+    return $pdf->download($nombreArchivo);
+}
+
+
+
+
+
+    public function cambiarEstado(Request $request, $id)
+{
+    $venta = Venta::findOrFail($id); // Encuentra la venta por su ID
+    $venta->estado_envio = $request->input('estado_envio'); // Actualiza el estado
+    $venta->save(); // Guarda los cambios en la base de datos
+
+    return redirect()->route('ventas.index')->with('success', 'Estado de envío actualizado correctamente.');
+}
+
+
+
+
     
 
     // Mostrar formulario de edición de una venta

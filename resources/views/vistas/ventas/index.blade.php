@@ -19,9 +19,9 @@
                     <th>#</th>
                     <th>Cliente</th>
                     <th>SubTotal</th>
-                    
                     <th>Total Pagado</th>
                     <th>Fecha</th>
+                    <th>Estado de Envío</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -30,11 +30,22 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $venta->usuario ? $venta->usuario->nombre . ' ' . $venta->usuario->apellido : '' }}</td>
-
                         <td>S/ {{ number_format($venta->total, 2) }}</td>
-                        
                         <td>S/ {{ number_format($venta->pagoTotal, 2) }}</td>
                         <td>{{ $venta->fecha }}</td>
+                        <td>
+                            <!-- Selector de estado de envío -->
+                            <form action="{{ route('ventas.cambiarEstado', $venta->id_venta) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @if($venta->estado_envio == 'pendiente')
+                                    <input type="hidden" name="estado_envio" value="enviado">
+                                    <button type="submit" class="btn btn-sm" style="background-color: #ff69b4; color: white;">Pendiente</button>
+                                @else
+                                    <input type="hidden" name="estado_envio" value="pendiente">
+                                    <button type="submit" class="btn btn-sm btn-success">Enviado</button>
+                                @endif
+                            </form>
+                        </td>
                         <td>
                             <a href="{{ route('ventas.show', $venta->id_venta) }}" class="btn btn-info btn-sm">Ver</a>
                             <a href="{{ route('ventas.edit', $venta->id_venta) }}" class="btn btn-warning btn-sm">Editar</a>
@@ -54,3 +65,4 @@
         </table>
     </div>
 @endsection
+

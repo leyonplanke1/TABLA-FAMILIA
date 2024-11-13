@@ -446,7 +446,7 @@
                         </li>
                         <!-- Submenú para agregar un cliente -->
                         <li>
-                            <a href="{{ route('categorias.index') }}" class="{{ Request::is('categorias.index') ? 'activo' : ''}}">
+                            <a href="{{ route('ventas.reporte') }}" class="{{ Request::is('ventas.reporte') ? 'activo' : ''}}">
                                 <i class="fas fa-plus icono-submenu"></i>
                                 <span class="lbl">Historial de Ventas</span>
                             </a>
